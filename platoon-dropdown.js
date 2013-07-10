@@ -94,6 +94,17 @@ BBLog.handle("add.plugin", {
     },
     
     AddDropdown : function(instance){
+    
+    		$(".RemoveBFGamesListItem").bind("click", function() {
+			var key = parseInt($(this).attr("data-id"));
+			var storedLinks = instance.storage("BFGamesList");
+			storedLinks.splice(key, 2);
+			instance.storage("BFGamesList", storedLinks);
+			
+			$(".base-header-section-nav > #entry-"+(key+1)).css("display", "none");
+			$(".radar[data-id="+key+"]").css("display", "none");
+		});
+    
      if (!$('.dropdown-content[data-for="platoons"]').length) {
       $(".base-section-menu li:nth-child(5)").addClass("has-dropdown");
       $(".base-section-menu li:nth-child(5)").attr('data-bind-toggle', 'dropdown');
