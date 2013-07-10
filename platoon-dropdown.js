@@ -26,7 +26,7 @@ BBLog.handle("add.plugin", {
 //            "foo" : "bar",
 //        },
 
-    },
+//    },
     
     init : function(instance){
           instance.AddDropdown(instance);
