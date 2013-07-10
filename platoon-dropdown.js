@@ -13,13 +13,8 @@ BBLog.handle("add.plugin", {
     name : "Platoon Dropdown",
     
     configFlags : [
-//		["option.menu", 1],
-//		["option.feed", 1],
-//		["option.block", 1],
-["button.title", 1, function(instance){
-            instance.OpenMenu(instance);
-        }],
-	],
+            ["button.title", 1, function(instance){instance.OpenMenu(instance);}],
+    ],
 
     translations : {
         "en" : {
@@ -94,7 +89,18 @@ BBLog.handle("add.plugin", {
     },
     
     AddDropdown : function(instance){
-    
+    		var storedPlatoons = instance.storage("PlatoonDropdown");
+		
+		if(storedPlatoons === null) {} else {
+            $.each(storedPlatoons, function(key, value) {
+				if(key%2 === 0) {
+	                lastName = value;
+                } else {
+					if(!$(".base-header-section-nav > #entry-"+key).length) 
+						$(".base-header-section-nav").append('<li id="entry-'+key+'" section="'+lastName+'"><a class="base-no-ajax" href="'+value+'" target="_blank">'+lastName+'</a></li>');
+				}
+            });
+        }
     		$(".RemovePlatoonDropdownItem").bind("click", function() {
 			var key = parseInt($(this).attr("data-id"));
 			var storedPlatoons = instance.storage("PlatoonDropdown");
