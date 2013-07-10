@@ -47,7 +47,7 @@ BBLog.handle("add.plugin", {
 				if(key%2 === 0) {
 	                lastName = value;
                 } else {
-					codeHtml += '<div class="radar" data-id="'+key+'"><div class="source-url">'+lastName+' - '+value+'</div><span class="bblog-button tiny delete RemoveBFGamesListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>';
+					codeHtml += '<div class="radar" data-id="'+key+'"><div class="source-url">'+lastName+' - '+value+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>';
 				}
             });
         }
@@ -75,7 +75,7 @@ BBLog.handle("add.plugin", {
 					}
 					var key = jQuery.inArray(linkname, storedPlatoons);
 					
-					$(".advanced > .spacer").before('<div class="radar" data-id="'+key+'"><div class="source-url">'+linkname+' - '+linklink+'</div><span class="bblog-button tiny delete RemoveBFGamesListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>');
+					$(".advanced > .spacer").before('<div class="radar" data-id="'+key+'"><div class="source-url">'+linkname+' - '+linklink+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>');
 					
 					$("#platoondropdown-name").attr("value", "");
 					$("#platoondropdown-id").attr("value", "");
@@ -95,11 +95,11 @@ BBLog.handle("add.plugin", {
     
     AddDropdown : function(instance){
     
-    		$(".RemoveBFGamesListItem").bind("click", function() {
+    		$(".RemovePlatoonDropdownItem").bind("click", function() {
 			var key = parseInt($(this).attr("data-id"));
-			var storedLinks = instance.storage("BFGamesList");
-			storedLinks.splice(key, 2);
-			instance.storage("BFGamesList", storedLinks);
+			var storedPlatoons = instance.storage("PlatoonDropdown");
+			storedPlatoons.splice(key, 2);
+			instance.storage("PlatoonDropdown", storedPlatoons);
 			
 			$(".base-header-section-nav > #entry-"+(key+1)).css("display", "none");
 			$(".radar[data-id="+key+"]").css("display", "none");
