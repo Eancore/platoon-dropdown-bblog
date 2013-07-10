@@ -70,7 +70,7 @@ BBLog.handle("add.plugin", {
 						storedPlatoons = new Array(linkname, linklink);
 						instance.storage("PlatoonDropdown", storedPlatoons);
 					} else {
-						storedLinks.push(linkname, linklink);
+						storedPlatoons.push(linkname, linklink);
 						instance.storage("PlatoonDropdown", storedPlatoons);
 					}
 					var key = jQuery.inArray(linkname, storedPlatoons);
