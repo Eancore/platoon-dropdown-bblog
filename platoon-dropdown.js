@@ -38,8 +38,8 @@ BBLog.handle("add.plugin", {
     },
     
     AddDropdown : function(instance){
-      $("li[data-page="platoons"]").addClass("has-dropdown");
-      $("li[data-page="platoons"]").attr('data-bind-toggle', 'dropdown');
+      $(.base-section-menu li:nth-child(5)).addClass("has-dropdown");
+      $(.base-section-menu li:nth-child(5)).attr('data-bind-toggle', 'dropdown');
       $(.dropdown-bar).append('<div class="dropdown-content" data-for="platoons"><div class="row"><nav class="span4 dropdown-menu"><a href="/bf3/cs/forum/"><i class="icon-white icon-friends2"></i><span>Platoon 1</span></a><a id="bblog-open-forum-fav"><i class="icon-white icon-friends2"></i><span>Platoon 2</span></a></nav></div></div>');
     },
     
