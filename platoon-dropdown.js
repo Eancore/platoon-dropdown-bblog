@@ -25,6 +25,7 @@ BBLog.handle("add.plugin", {
         "en" : {
             "button.title" : "Manage displayed platoons",
             "menu.description" : "Here you can choose, which platoons will be displayed.",
+            "menu.addbutton" : "Add",
             "textbox.name" : "Displayed name",
             "textbox.id" : "ID of platoon",
          },
@@ -32,6 +33,7 @@ BBLog.handle("add.plugin", {
             "plugin.name" : "Vyjížděcí menu pro čety",
             "button.title" : "Spravovat zobrazené čety",
             "menu.description" : "Zde můžete určit, které čety se budou zobrazovat.",
+            "menu.addbutton" : "Přidat",
         },
     },
     
@@ -51,11 +53,11 @@ BBLog.handle("add.plugin", {
         }
 		codeHtml += '<div class="spacer"></div><form method="post" action="" id="platoondropdown-addplatoon-form"><input id="platoondropdown-name" type="text" placeholder="';
 		codeHtml += instance.t("textbox.name")+'" style="width:450px; float:left;">';
-		codeHtml += '<input type="text" placeholder="'+instance.t("textbox.id")+'" style="margin-left:20px; width:484px; clear:both;" id="platoondropdown-id"><br /><input type="submit" class="bblog-button tiny" id="platoondropdown-addplatoon-button" style="width:auto;margin-top:5px;padding-left:10px;padding-right:10px;" value="'+instance.t("bfgameslist.settings.addItem")+'">';
+		codeHtml += '<input type="text" placeholder="'+instance.t("textbox.id")+'" style="margin-left:20px; width:484px; clear:both;" id="platoondropdown-id"><br /><input type="submit" class="bblog-button tiny" id="platoondropdown-addplatoon-button" style="width:auto;margin-top:5px;padding-left:10px;padding-right:10px;" value="'+instance.t("menu.addbutton")+'">';
 		
 		$(".bblog-options > .advanced").html(codeHtml).fadeIn('slow');
 		
-		$("#platoondropdown-addplatoon-form").bind("submit", function(e) {
+		$("#platoondropdown-addplatoon-button").bind("submit", function(e) {
 			e.preventDefault();
 			
 			var linkname = $("#platoondropdown-name").attr("value"),
