@@ -96,6 +96,7 @@ BBLog.handle("add.plugin", {
          }
     
     else {
+          if (!$('.dropdown-content[data-for="platoons"]').length) {
           $(".base-section-menu li:nth-child(5)").addClass("has-dropdown");
           $(".base-section-menu li:nth-child(5)").attr('data-bind-toggle', 'dropdown');
           $(".dropdown-bar").append('<div class="dropdown-content" data-for="platoons"><div class="row"><nav class="span4 dropdown-menu">');
@@ -110,6 +111,7 @@ BBLog.handle("add.plugin", {
 		        		}
           });
           $(".dropdown-bar").append('</nav></div></div>');
+          }
         }
 		
     	$(".RemovePlatoonDropdownListItem").bind("click", function() {
