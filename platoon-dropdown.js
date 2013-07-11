@@ -48,7 +48,7 @@ BBLog.handle("add.plugin", {
         }
 				codeHtml += '<div class="spacer"></div><form method="post" action="" id="bfgameslist-additem-form"><input id="bfgameslist-firstbox" type="text" placeholder="';
 		codeHtml += instance.t("textbox.name")+'" style="width:450px; float:left;">';
-		codeHtml += '<input type="text" placeholder="'+instance.t("textbox.id")+'" style="margin-left:20px; width:484px; clear:both;" id="bfgameslist-secondbox"><br /><input type="submit" class="bblog-button tiny" id="bfgameslist-additem-button" style="width:auto;margin-top:5px;padding-left:10px;padding-right:10px;" value="'+instance.t("bfgameslist.settings.addItem")+'">';
+		codeHtml += '<input type="text" placeholder="'+instance.t("textbox.id")+'" style="margin-left:20px; width:484px; clear:both;" id="bfgameslist-secondbox"><br /><input type="submit" class="bblog-button tiny" id="bfgameslist-additem-button" style="width:auto;margin-top:5px;padding-left:10px;padding-right:10px;" value="'+instance.t("menu.addbutton")+'">';
 		
 		$(".bblog-options > .advanced").html(codeHtml).fadeIn('slow');
 
