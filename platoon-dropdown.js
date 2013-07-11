@@ -42,38 +42,38 @@ BBLog.handle("add.plugin", {
 				if(key%2 === 0) {
 	                lastName = value;
                 } else {
-					codeHtml += '<div class="radar" data-id="'+key+'"><div class="source-url">'+lastName+' - '+value+'</div><span class="bblog-button tiny delete RemoveBFGamesListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>';
+					codeHtml += '<div class="radar" data-id="'+key+'"><div class="source-url">'+lastName+' - '+value+'</div><span class="bblog-button tiny delete Remove ListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>';
 				}
             });
         }
-				codeHtml += '<div class="spacer"></div><form method="post" action="" id="bfgameslist-additem-form"><input id="bfgameslist-firstbox" type="text" placeholder="';
+				codeHtml += '<div class="spacer"></div><form method="post" action="" id="platoondropdown-additem-form"><input id="platoondropdown-firstbox" type="text" placeholder="';
 		codeHtml += instance.t("textbox.name")+'" style="width:450px; float:left;">';
-		codeHtml += '<input type="text" placeholder="'+instance.t("textbox.id")+'" style="margin-left:20px; width:484px; clear:both;" id="bfgameslist-secondbox"><br /><input type="submit" class="bblog-button tiny" id="bfgameslist-additem-button" style="width:auto;margin-top:5px;padding-left:10px;padding-right:10px;" value="'+instance.t("menu.addbutton")+'">';
+		codeHtml += '<input type="text" placeholder="'+instance.t("textbox.id")+'" style="margin-left:20px; width:484px; clear:both;" id="bfgameslist-secondbox"><br /><input type="submit" class="bblog-button tiny" id="platoondropdown-additem-button" style="width:auto;margin-top:5px;padding-left:10px;padding-right:10px;" value="'+instance.t("menu.addbutton")+'">';
 		
 		$(".bblog-options > .advanced").html(codeHtml).fadeIn('slow');
 
-		$("#bfgameslist-additem-form").bind("submit", function(e) {
+		$("#platoondropdown-additem-form").bind("submit", function(e) {
 			e.preventDefault();
 			
-			var linkname = $("#bfgameslist-firstbox").attr("value"),
-        	linklink = $("#bfgameslist-secondbox").attr("value");
+			var linkname = $("#platoondropdown-firstbox").attr("value"),
+        	linklink = $("#platoondropdown-secondbox").attr("value");
 			
 			if(linkname != "") {
 				if(linklink != "") {
 					var storedLinks = instance.storage("PlatoonDropdown");
 					if(storedLinks === null) {
 						storedLinks = new Array(linkname, linklink);
-						instance.storage("BFGamesList", storedLinks);
+						instance.storage("PlatoonDropdown", storedLinks);
 					} else {
 						storedLinks.push(linkname, linklink);
-						instance.storage("BFGamesList", storedLinks);
+						instance.storage("PlatoonDropdown", storedLinks);
 					}
 					var key = jQuery.inArray(linkname, storedLinks);
 					
-					$(".advanced > .spacer").before('<div class="radar" data-id="'+key+'"><div class="source-url">'+linkname+' - '+linklink+'</div><span class="bblog-button tiny delete RemoveBFGamesListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>');
+					$(".advanced > .spacer").before('<div class="radar" data-id="'+key+'"><div class="source-url">'+linkname+' - '+linklink+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>');
 					
-					$("#bfgameslist-firstbox").attr("value", "");
-					$("#bfgameslist-secondbox").attr("value", "");
+					$("#platoondropdown-firstbox").attr("value", "");
+					$("#platoondropdown-secondbox").attr("value", "");
 				}
 			}
 		});
@@ -102,11 +102,11 @@ BBLog.handle("add.plugin", {
             });
         }
 		
-    		$(".RemoveBFGamesListItem").bind("click", function() {
+    		$(".RemovePlatoonDropdownListItem").bind("click", function() {
 			var key = parseInt($(this).attr("data-id"));
 			var storedLinks = instance.storage("PlatoonDropdown");
 			storedLinks.splice(key, 2);
-			instance.storage("BFGamesList", storedLinks);
+			instance.storage("PlatoonDropdown", storedLinks);
 			
 			$(".base-header-section-nav > #entry-"+(key+1)).css("display", "none");
 			$(".radar[data-id="+key+"]").css("display", "none");
