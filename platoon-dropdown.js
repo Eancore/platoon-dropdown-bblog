@@ -35,10 +35,10 @@ BBLog.handle("add.plugin", {
     OpenMenu : function(instance) {
 		var codeHtml = '<div class="section-title customfont">'+instance.t("plugin.name")+' - '+instance.t("button.title")+'</div><div class="section-description"><p>'+instance.t("menu.description")+'</p></div>';
 		
-		var storedLinks = instance.storage("PlatoonDropdown"),
+		var storedPlatoons = instance.storage("PlatoonDropdown"),
 			lastName;
-		if(storedLinks === null) {} else {
-            $.each(storedLinks, function(key, value) {
+		if(storedPlatoons === null) {} else {
+            $.each(storedPlatoons, function(key, value) {
 				if(key%2 === 0) {
 	                lastName = value;
                 } else {
@@ -60,15 +60,15 @@ BBLog.handle("add.plugin", {
 			
 			if(linkname != "") {
 				if(linklink != "") {
-					var storedLinks = instance.storage("PlatoonDropdown");
-					if(storedLinks === null) {
-						storedLinks = new Array(linkname, linklink);
-						instance.storage("PlatoonDropdown", storedLinks);
+					var storedPlatoons = instance.storage("PlatoonDropdown");
+					if(storedPlatoons === null) {
+						storedPlatoons = new Array(linkname, linklink);
+						instance.storage("PlatoonDropdown", storedPlatoons);
 					} else {
-						storedLinks.push(linkname, linklink);
-						instance.storage("PlatoonDropdown", storedLinks);
+						storedPlatoons.push(linkname, linklink);
+						instance.storage("PlatoonDropdown", storedPlatoons);
 					}
-					var key = jQuery.inArray(linkname, storedLinks);
+					var key = jQuery.inArray(linkname, storedPlatoons);
 					
 					$(".advanced > .spacer").before('<div class="radar" data-id="'+key+'"><div class="source-url">'+linkname+' - '+linklink+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>');
 					
@@ -89,10 +89,10 @@ BBLog.handle("add.plugin", {
     },
     
     AddDropdown : function(instance){
-    			var storedLinks = instance.storage("PlatoonDropdown");
+    			var storedPlatoons = instance.storage("PlatoonDropdown");
 		
-		if(storedLinks === null) {} else {
-            $.each(storedLinks, function(key, value) {
+		if(storedPlatoons === null) {} else {
+            $.each(storedPlatoons, function(key, value) {
 				if(key%2 === 0) {
 	                lastName = value;
                 } else {
@@ -104,9 +104,9 @@ BBLog.handle("add.plugin", {
 		
     		$(".RemovePlatoonDropdownListItem").bind("click", function() {
 			var key = parseInt($(this).attr("data-id"));
-			var storedLinks = instance.storage("PlatoonDropdown");
-			storedLinks.splice(key, 2);
-			instance.storage("PlatoonDropdown", storedLinks);
+			var storedPlatoons = instance.storage("PlatoonDropdown");
+			storedPlatoons.splice(key, 2);
+			instance.storage("PlatoonDropdown", storedPlatoons);
 			
 			$(".base-header-section-nav > #entry-"+(key+1)).css("display", "none");
 			$(".radar[data-id="+key+"]").css("display", "none");
