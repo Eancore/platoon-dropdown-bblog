@@ -91,36 +91,39 @@ BBLog.handle("add.plugin", {
     AddDropdown : function(instance){
     			var storedPlatoons = instance.storage("PlatoonDropdown");
 		
-		if(storedPlatoons === null) {} else {
-            $.each(storedPlatoons, function(keyplatoondropdown, valueplatoondropdown) {
-				if(keyplatoondropdown%2 === 0) {
-	                lastNamePlatoonDropdown = valueplatoondropdown;
-                } else {
-					if(!$(".base-header-section-nav > #entry-"+keyplatoondropdown).length) 
-						$(".base-header-section-nav").append('<li id="entry-'+keyplatoondropdown+'" section="'+lastNamePlatoonDropdown+'"><a class="base-no-ajax" href="'+valueplatoondropdown+'" target="_blank">'+lastNamePlatoonDropdown+'</a></li>');
-				}
-            });
+		if(storedPlatoons === null) 
+         {
+         }
+    
+    else {
+          $(".base-section-menu li:nth-child(5)").addClass("has-dropdown");
+          $(".base-section-menu li:nth-child(5)").attr('data-bind-toggle', 'dropdown');
+          $(".dropdown-bar").append('<div class="dropdown-content" data-for="platoons"><div class="row"><nav class="span4 dropdown-menu">');
+          $.each(storedPlatoons, function(keyplatoondropdown, valueplatoondropdown) {
+				      if(keyplatoondropdown%2 === 0) 
+                {
+	              lastNamePlatoonDropdown = valueplatoondropdown;
+                } 
+              else
+                {
+				        $(".dropdown-bar").append('<a href="'+valueplatoondropdown+'"><i class="icon-white icon-friends2"></i><span>'+lastNamePlatoonDropdown+'</span></a>');           
+		        		}
+          });
+          $(".dropdown-bar").append('</nav></div></div>');
         }
 		
-    		$(".RemovePlatoonDropdownListItem").bind("click", function() {
-			var keyplatoondropdown = parseInt($(this).attr("data-id"));
-			var storedPlatoons = instance.storage("PlatoonDropdown");
-			storedPlatoons.splice(keyplatoondropdown, 2);
-			instance.storage("PlatoonDropdown", storedPlatoons);
-			
-			$(".base-header-section-nav > #entry-"+(keyplatoondropdown+1)).css("display", "none");
-			$(".radar[data-id="+keyplatoondropdown+"]").css("display", "none");
-		});
+    	$(".RemovePlatoonDropdownListItem").bind("click", function() {
+			   var keyplatoondropdown = parseInt($(this).attr("data-id"));
+		     var storedPlatoons = instance.storage("PlatoonDropdown");
+			   storedPlatoons.splice(keyplatoondropdown, 2);
+		     instance.storage("PlatoonDropdown", storedPlatoons);
+    		 $(".base-header-section-nav > #entry-"+(keyplatoondropdown+1)).css("display", "none");
+		     $(".radar[data-id="+keyplatoondropdown+"]").css("display", "none");
+		  });
+  
     
-     if (!$('.dropdown-content[data-for="platoons"]').length) {
-      $(".base-section-menu li:nth-child(5)").addClass("has-dropdown");
-      $(".base-section-menu li:nth-child(5)").attr('data-bind-toggle', 'dropdown');
-      $(".dropdown-bar").append('<div class="dropdown-content" data-for="platoons"><div class="row"><nav class="span4 dropdown-menu"><a href="/bf3/cs/forum/"><i class="icon-white icon-friends2"></i><span>Platoon 1</span></a><a id="bblog-open-forum-fav"><i class="icon-white icon-friends2"></i><span>Platoon 2</span></a></nav></div></div>');
-     }
     },
-    
-
-});
+    });
 
 
 
