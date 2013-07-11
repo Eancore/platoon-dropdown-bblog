@@ -35,7 +35,7 @@ BBLog.handle("add.plugin", {
     OpenMenu : function(instance) {
 		var codeHtml = '<div class="section-title customfont">'+instance.t("plugin.name")+' - '+instance.t("button.title")+'</div><div class="section-description"><p>'+instance.t("menu.description")+'</p></div>';
 		
-		var storedLinks = instance.storage("BFGamesList"),
+		var storedLinks = instance.storage("PlatoonDropdown"),
 			lastName;
 		if(storedLinks === null) {} else {
             $.each(storedLinks, function(key, value) {
@@ -60,7 +60,7 @@ BBLog.handle("add.plugin", {
 			
 			if(linkname != "") {
 				if(linklink != "") {
-					var storedLinks = instance.storage("BFGamesList");
+					var storedLinks = instance.storage("PlatoonDropdown");
 					if(storedLinks === null) {
 						storedLinks = new Array(linkname, linklink);
 						instance.storage("BFGamesList", storedLinks);
@@ -89,7 +89,7 @@ BBLog.handle("add.plugin", {
     },
     
     AddDropdown : function(instance){
-    			var storedLinks = instance.storage("BFGamesList");
+    			var storedLinks = instance.storage("PlatoonDropdown");
 		
 		if(storedLinks === null) {} else {
             $.each(storedLinks, function(key, value) {
@@ -104,7 +104,7 @@ BBLog.handle("add.plugin", {
 		
     		$(".RemoveBFGamesListItem").bind("click", function() {
 			var key = parseInt($(this).attr("data-id"));
-			var storedLinks = instance.storage("BFGamesList");
+			var storedLinks = instance.storage("PlatoonDropdown");
 			storedLinks.splice(key, 2);
 			instance.storage("BFGamesList", storedLinks);
 			
