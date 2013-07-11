@@ -117,7 +117,6 @@ BBLog.handle("add.plugin", {
 		     var storedPlatoons = instance.storage("PlatoonDropdown");
 			   storedPlatoons.splice(keyplatoondropdown, 2);
 		     instance.storage("PlatoonDropdown", storedPlatoons);
-    		 $(".base-header-section-nav > #entry-"+(keyplatoondropdown+1)).css("display", "none");
 		     $(".radar[data-id="+keyplatoondropdown+"]").css("display", "none");
 		  });
   
