@@ -33,44 +33,44 @@ BBLog.handle("add.plugin", {
     },
     
     OpenMenu : function(instance) {
-		var codeHtml = '<div class="section-title customfont">'+instance.t("plugin.name")+' - '+instance.t("button.title")+'</div><div class="section-description"><p>'+instance.t("menu.description")+'</p></div>';
+		var codeHtmlPlatoonDropdown = '<div class="section-title customfont">'+instance.t("plugin.name")+' - '+instance.t("button.title")+'</div><div class="section-description"><p>'+instance.t("menu.description")+'</p></div>';
 		
 		var storedPlatoons = instance.storage("PlatoonDropdown"),
 			lastName;
 		if(storedPlatoons === null) {} else {
-            $.each(storedPlatoons, function(key, value) {
-				if(key%2 === 0) {
+            $.each(storedPlatoons, function(keyplatoondropdown, value) {
+				if(keyplatoondropdown%2 === 0) {
 	                lastName = value;
                 } else {
-					codeHtml += '<div class="radar" data-id="'+key+'"><div class="source-url">'+lastName+' - '+value+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>';
+					codeHtmlPlatoonDropdown += '<div class="radar" data-id="'+keyplatoondropdown+'"><div class="source-url">'+lastName+' - '+value+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+keyplatoondropdown+'">'+BBLog.t("delete")+'</span></div>';
 				}
             });
         }
-				codeHtml += '<div class="spacer"></div><form method="post" action="" id="platoondropdown-additem-form"><input id="platoondropdown-firstbox" type="text" placeholder="';
-		codeHtml += instance.t("textbox.name")+'" style="width:450px; float:left;">';
-		codeHtml += '<input type="text" placeholder="'+instance.t("textbox.id")+'" style="margin-left:20px; width:484px; clear:both;" id="platoondropdown-secondbox"><br /><input type="submit" class="bblog-button tiny" id="platoondropdown-additem-button" style="width:auto;margin-top:5px;padding-left:10px;padding-right:10px;" value="'+instance.t("menu.addbutton")+'">';
+				codeHtmlPlatoonDropdown += '<div class="spacer"></div><form method="post" action="" id="platoondropdown-additem-form"><input id="platoondropdown-firstbox" type="text" placeholder="';
+		codeHtmlPlatoonDropdown += instance.t("textbox.name")+'" style="width:450px; float:left;">';
+		codeHtmlPlatoonDropdown += '<input type="text" placeholder="'+instance.t("textbox.id")+'" style="margin-left:20px; width:484px; clear:both;" id="platoondropdown-secondbox"><br /><input type="submit" class="bblog-button tiny" id="platoondropdown-additem-button" style="width:auto;margin-top:5px;padding-left:10px;padding-right:10px;" value="'+instance.t("menu.addbutton")+'">';
 		
-		$(".bblog-options > .advanced").html(codeHtml).fadeIn('slow');
+		$(".bblog-options > .advanced").html(codeHtmlPlatoonDropdown).fadeIn('slow');
 
 		$("#platoondropdown-additem-form").bind("submit", function(e) {
 			e.preventDefault();
 			
-			var linkname = $("#platoondropdown-firstbox").attr("value"),
-        	linklink = $("#platoondropdown-secondbox").attr("value");
+			var linknameplatoondropdown = $("#platoondropdown-firstbox").attr("value"),
+        	linklinkplatoondropdown = $("#platoondropdown-secondbox").attr("value");
 			
-			if(linkname != "") {
-				if(linklink != "") {
+			if(linknameplatoondropdown != "") {
+				if(linklinkplatoondropdown != "") {
 					var storedPlatoons = instance.storage("PlatoonDropdown");
 					if(storedPlatoons === null) {
-						storedPlatoons = new Array(linkname, linklink);
+						storedPlatoons = new Array(linknameplatoondropdown, linklinkplatoondropdown);
 						instance.storage("PlatoonDropdown", storedPlatoons);
 					} else {
-						storedPlatoons.push(linkname, linklink);
+						storedPlatoons.push(linknameplatoondropdown, linklinkplatoondropdown);
 						instance.storage("PlatoonDropdown", storedPlatoons);
 					}
-					var key = jQuery.inArray(linkname, storedPlatoons);
+					var keyplatoondropdown = jQuery.inArray(linknameplatoondropdown, storedPlatoons);
 					
-					$(".advanced > .spacer").before('<div class="radar" data-id="'+key+'"><div class="source-url">'+linkname+' - '+linklink+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>');
+					$(".advanced > .spacer").before('<div class="radar" data-id="'+keyplatoondropdown+'"><div class="source-url">'+linknameplatoondropdown+' - '+linklinkplatoondropdown+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+keyplatoondropdown+'">'+BBLog.t("delete")+'</span></div>');
 					
 					$("#platoondropdown-firstbox").attr("value", "");
 					$("#platoondropdown-secondbox").attr("value", "");
@@ -92,24 +92,24 @@ BBLog.handle("add.plugin", {
     			var storedPlatoons = instance.storage("PlatoonDropdown");
 		
 		if(storedPlatoons === null) {} else {
-            $.each(storedPlatoons, function(key, value) {
-				if(key%2 === 0) {
+            $.each(storedPlatoons, function(keyplatoondropdown, value) {
+				if(keyplatoondropdown%2 === 0) {
 	                lastName = value;
                 } else {
-					if(!$(".base-header-section-nav > #entry-"+key).length) 
-						$(".base-header-section-nav").append('<li id="entry-'+key+'" section="'+lastName+'"><a class="base-no-ajax" href="'+value+'" target="_blank">'+lastName+'</a></li>');
+					if(!$(".base-header-section-nav > #entry-"+keyplatoondropdown).length) 
+						$(".base-header-section-nav").append('<li id="entry-'+keyplatoondropdown+'" section="'+lastName+'"><a class="base-no-ajax" href="'+value+'" target="_blank">'+lastName+'</a></li>');
 				}
             });
         }
 		
     		$(".RemovePlatoonDropdownListItem").bind("click", function() {
-			var key = parseInt($(this).attr("data-id"));
+			var keyplatoondropdown = parseInt($(this).attr("data-id"));
 			var storedPlatoons = instance.storage("PlatoonDropdown");
-			storedPlatoons.splice(key, 2);
+			storedPlatoons.splice(keyplatoondropdown, 2);
 			instance.storage("PlatoonDropdown", storedPlatoons);
 			
-			$(".base-header-section-nav > #entry-"+(key+1)).css("display", "none");
-			$(".radar[data-id="+key+"]").css("display", "none");
+			$(".base-header-section-nav > #entry-"+(keyplatoondropdown+1)).css("display", "none");
+			$(".radar[data-id="+keyplatoondropdown+"]").css("display", "none");
 		});
     
      if (!$('.dropdown-content[data-for="platoons"]').length) {
