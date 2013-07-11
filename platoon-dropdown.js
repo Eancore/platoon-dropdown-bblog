@@ -36,13 +36,13 @@ BBLog.handle("add.plugin", {
 		var codeHtmlPlatoonDropdown = '<div class="section-title customfont">'+instance.t("plugin.name")+' - '+instance.t("button.title")+'</div><div class="section-description"><p>'+instance.t("menu.description")+'</p></div>';
 		
 		var storedPlatoons = instance.storage("PlatoonDropdown"),
-			lastName;
+			lastNamePlatoonDropdown;
 		if(storedPlatoons === null) {} else {
-            $.each(storedPlatoons, function(keyplatoondropdown, value) {
+            $.each(storedPlatoons, function(keyplatoondropdown, valueplatoondropdown) {
 				if(keyplatoondropdown%2 === 0) {
-	                lastName = value;
+	                lastNamePlatoonDropdown = valueplatoondropdown;
                 } else {
-					codeHtmlPlatoonDropdown += '<div class="radar" data-id="'+keyplatoondropdown+'"><div class="source-url">'+lastName+' - '+value+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+keyplatoondropdown+'">'+BBLog.t("delete")+'</span></div>';
+					codeHtmlPlatoonDropdown += '<div class="radar" data-id="'+keyplatoondropdown+'"><div class="source-url">'+lastNamePlatoonDropdown+' - '+valueplatoondropdown+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+keyplatoondropdown+'">'+BBLog.t("delete")+'</span></div>';
 				}
             });
         }
@@ -55,8 +55,8 @@ BBLog.handle("add.plugin", {
 		$("#platoondropdown-additem-form").bind("submit", function(e) {
 			e.preventDefault();
 			
-			var linknameplatoondropdown = $("#platoondropdown-firstbox").attr("value"),
-        	linklinkplatoondropdown = $("#platoondropdown-secondbox").attr("value");
+			var linknameplatoondropdown = $("#platoondropdown-firstbox").attr("valueplatoondropdown"),
+        	linklinkplatoondropdown = $("#platoondropdown-secondbox").attr("valueplatoondropdown");
 			
 			if(linknameplatoondropdown != "") {
 				if(linklinkplatoondropdown != "") {
@@ -72,8 +72,8 @@ BBLog.handle("add.plugin", {
 					
 					$(".advanced > .spacer").before('<div class="radar" data-id="'+keyplatoondropdown+'"><div class="source-url">'+linknameplatoondropdown+' - '+linklinkplatoondropdown+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+keyplatoondropdown+'">'+BBLog.t("delete")+'</span></div>');
 					
-					$("#platoondropdown-firstbox").attr("value", "");
-					$("#platoondropdown-secondbox").attr("value", "");
+					$("#platoondropdown-firstbox").attr("valueplatoondropdown", "");
+					$("#platoondropdown-secondbox").attr("valueplatoondropdown", "");
 				}
 			}
 		});
@@ -92,12 +92,12 @@ BBLog.handle("add.plugin", {
     			var storedPlatoons = instance.storage("PlatoonDropdown");
 		
 		if(storedPlatoons === null) {} else {
-            $.each(storedPlatoons, function(keyplatoondropdown, value) {
+            $.each(storedPlatoons, function(keyplatoondropdown, valueplatoondropdown) {
 				if(keyplatoondropdown%2 === 0) {
-	                lastName = value;
+	                lastNamePlatoonDropdown = valueplatoondropdown;
                 } else {
 					if(!$(".base-header-section-nav > #entry-"+keyplatoondropdown).length) 
-						$(".base-header-section-nav").append('<li id="entry-'+keyplatoondropdown+'" section="'+lastName+'"><a class="base-no-ajax" href="'+value+'" target="_blank">'+lastName+'</a></li>');
+						$(".base-header-section-nav").append('<li id="entry-'+keyplatoondropdown+'" section="'+lastNamePlatoonDropdown+'"><a class="base-no-ajax" href="'+valueplatoondropdown+'" target="_blank">'+lastNamePlatoonDropdown+'</a></li>');
 				}
             });
         }
