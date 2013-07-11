@@ -42,7 +42,7 @@ BBLog.handle("add.plugin", {
 				if(key%2 === 0) {
 	                lastName = value;
                 } else {
-					codeHtml += '<div class="radar" data-id="'+key+'"><div class="source-url">'+lastName+' - '+value+'</div><span class="bblog-button tiny delete Remove ListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>';
+					codeHtml += '<div class="radar" data-id="'+key+'"><div class="source-url">'+lastName+' - '+value+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>';
 				}
             });
         }
