@@ -118,7 +118,7 @@ BBLog.handle("add.plugin", {
     	$(".RemovePlatoonDropdownListItem").bind("click", function() {
 			   var key = parseInt($(this).attr("data-id"));
 		     var storedPlatoons = instance.storage("PlatoonDropdown");
-			   storedPlatoons.splice(key, 2);
+			   storedPlatoons.splice(key-1, 2);
 		     instance.storage("PlatoonDropdown", storedPlatoons);
 		     $(".radar[data-id="+key+"]").css("display", "none");
 		  });
