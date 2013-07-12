@@ -19,7 +19,7 @@ BBLog.handle("add.plugin", {
     translations : {
         "en" : {
             "button.title" : "Manage displayed platoons",
-            "menu.description" : "Here you can choose, which platoons will be displayed.",
+            "menu.description" : "Here you can choose, which platoons will be displayed. You can get the ID of a platoon from the URL of its page, for example: in http://battlelog.battlefield.com/bf3/cs/platoon/2832655241424190855/, the ID is <strong>2832655241424190855</strong>.",
             "menu.addbutton" : "Add",
             "textbox.name" : "Displayed name",
             "textbox.id" : "ID of platoon",
@@ -27,8 +27,10 @@ BBLog.handle("add.plugin", {
         "cs" : {
             "plugin.name" : "Vyjížděcí menu pro čety",
             "button.title" : "Spravovat zobrazené čety",
-            "menu.description" : "Zde můžete určit, které čety se budou zobrazovat.",
+            "menu.description" : "Zde můžete určit, které čety se budou zobrazovat. ID čety můžete získat z URL stránky čety, například pro http://battlelog.battlefield.com/bf3/cs/platoon/2832655241424190855/ je ID <strong>2832655241424190855</strong>.",
             "menu.addbutton" : "Přidat",
+            "textbox.name" : "Zobrazované jméno",
+            "textbox.id" : "ID čety",            
         },
     },
     
