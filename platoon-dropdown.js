@@ -68,7 +68,7 @@ BBLog.handle("add.plugin", {
 						storedPlatoons.push(linknameplatoondropdown, linklinkplatoondropdown);
 						instance.storage("PlatoonDropdown", storedPlatoons);
 					}
-					var key = jQuery.inArray(linknameplatoondropdown, storedPlatoons);
+					var key = jQuery.inArray(linknameplatoondropdown, storedPlatoons) + 1;
 					
 					$(".advanced > .spacer").before('<div class="radar" data-id="'+key+'"><div class="source-url">'+linknameplatoondropdown+' - '+linklinkplatoondropdown+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>');
 					
