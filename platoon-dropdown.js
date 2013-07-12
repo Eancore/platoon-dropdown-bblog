@@ -39,7 +39,7 @@ BBLog.handle("add.plugin", {
 		
 		var storedPlatoons = instance.storage("PlatoonDropdown"),
 			lastNamePlatoonDropdown;
-		if(storedPlatoons === null) {} else {
+		if(storedPlatoons === null || storedPlatoons=="") {} else {
             $.each(storedPlatoons, function(key, value) {
 			         	if(key%2 === 0) {
 	                 lastNamePlatoonDropdown = value;
@@ -63,7 +63,15 @@ BBLog.handle("add.plugin", {
 			if(linknameplatoondropdown != "" && linklinkplatoondropdown != "") 
       {
 					var storedPlatoons = instance.storage("PlatoonDropdown");
-					if(storedPlatoons === null) {
+					if(storedPlatoons=="")
+          {
+          $(".base-section-menu li:nth-child(5)").addClass("has-dropdown");
+          $(".base-section-menu li:nth-child(5)").attr('data-bind-toggle', 'dropdown');
+          $(".dropdown-bar").append('<div class="dropdown-content" data-for="platoons"></div>');
+          $('.dropdown-content[data-for="platoons"]').append('<div class="row"></div>');
+          $('.dropdown-content[data-for="platoons"] > .row').append('<nav class="span4 dropdown-menu"></nav>');          
+          }
+          if(storedPlatoons === null) {
           $(".base-section-menu li:nth-child(5)").addClass("has-dropdown");
           $(".base-section-menu li:nth-child(5)").attr('data-bind-toggle', 'dropdown');
           $(".dropdown-bar").append('<div class="dropdown-content" data-for="platoons"></div>');
@@ -99,7 +107,7 @@ BBLog.handle("add.plugin", {
     $('.section-config > span[data-key="platoon-dropdown.button.title"]').remove();
     			var storedPlatoons = instance.storage("PlatoonDropdown");
 		
-		if(storedPlatoons === null) 
+		if(storedPlatoons === null || storedPlatoons=="") 
          {
          }
     
@@ -130,7 +138,7 @@ BBLog.handle("add.plugin", {
 			   storedPlatoons.splice(key-1, 2);
 		     instance.storage("PlatoonDropdown", storedPlatoons);
 		     $(".radar[data-id="+key+"]").css("display", "none");
-         if(storedPlatoons === null) 
+         if(storedPlatoons === null || storedPlatoons=="") 
          {
           $(".base-section-menu li:nth-child(5)").removeClass("has-dropdown");
           $(".base-section-menu li:nth-child(5)").removeAttr('data-bind-toggle'); 
