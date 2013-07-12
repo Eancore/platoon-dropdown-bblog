@@ -97,8 +97,8 @@ BBLog.handle("add.plugin", {
     
     else {
           if (!$('.dropdown-content[data-for="platoons"]').length) {
-          $(".base-section-menu li:nth-child(5)").addClass("has-dropdown");
-          $(".base-section-menu li:nth-child(5)").attr('data-bind-toggle', 'dropdown');
+          $(".base-section-menu > li[data-page="platoons"]").addClass("has-dropdown");
+          $(".base-section-menu > li[data-page="platoons"]").attr('data-bind-toggle', 'dropdown');
           $(".dropdown-bar").append('<div class="dropdown-content" data-for="platoons"></div>');
           $('.dropdown-content[data-for="platoons"]').append('<div class="row"></div>');
           $('.dropdown-content[data-for="platoons"] > .row').append('<nav class="span4 dropdown-menu"></nav>');
