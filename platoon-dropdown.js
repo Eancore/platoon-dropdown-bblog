@@ -64,6 +64,11 @@ BBLog.handle("add.plugin", {
       {
 					var storedPlatoons = instance.storage("PlatoonDropdown");
 					if(storedPlatoons === null) {
+          $(".base-section-menu li:nth-child(5)").addClass("has-dropdown");
+          $(".base-section-menu li:nth-child(5)").attr('data-bind-toggle', 'dropdown');
+          $(".dropdown-bar").append('<div class="dropdown-content" data-for="platoons"></div>');
+          $('.dropdown-content[data-for="platoons"]').append('<div class="row"></div>');
+          $('.dropdown-content[data-for="platoons"] > .row').append('<nav class="span4 dropdown-menu"></nav>');
 						storedPlatoons = new Array(linknameplatoondropdown, linklinkplatoondropdown);
 						instance.storage("PlatoonDropdown", storedPlatoons);
 					} else {
@@ -71,6 +76,7 @@ BBLog.handle("add.plugin", {
 						instance.storage("PlatoonDropdown", storedPlatoons);
 					}
 					var key = jQuery.inArray(linknameplatoondropdown, storedPlatoons) + 1;
+          $('.dropdown-content[data-for="platoons"] > .row > nav').append('<a href="http://battlelog.battlefield.com/bf3/'+BBLog.cache("battlelog.language")+'platoon/'+linklinkplatoondropdown+'/" data-id="'+key+'"><i class="icon-white icon-friends2"></i><span>'+linknameplatoondropdown+'</span></a>');
 					
 					$(".advanced > .spacer").before('<div class="radar" data-id="'+key+'"><div class="source-url">'+linknameplatoondropdown+' - '+linklinkplatoondropdown+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>');
 					
@@ -111,7 +117,7 @@ BBLog.handle("add.plugin", {
                 } 
               else
                 {
-				        $('.dropdown-content[data-for="platoons"] > .row > nav').append('<a href="http://battlelog.battlefield.com/bf3/'+BBLog.cache("battlelog.language")+'platoon/'+value+'/"><i class="icon-white icon-friends2"></i><span>'+lastNamePlatoonDropdown+'</span></a>');           
+				        $('.dropdown-content[data-for="platoons"] > .row > nav').append('<a href="http://battlelog.battlefield.com/bf3/'+BBLog.cache("battlelog.language")+'platoon/'+value+'/" data-id="'+key+'"><i class="icon-white icon-friends2"></i><span>'+lastNamePlatoonDropdown+'</span></a>');           
 		        		}
           });
           $(".dropdown-bar").append('</nav></div></div>');
@@ -124,6 +130,12 @@ BBLog.handle("add.plugin", {
 			   storedPlatoons.splice(key-1, 2);
 		     instance.storage("PlatoonDropdown", storedPlatoons);
 		     $(".radar[data-id="+key+"]").css("display", "none");
+         if(storedPlatoons === null) 
+         {
+          $(".base-section-menu li:nth-child(5)").removeClass("has-dropdown");
+          $(".base-section-menu li:nth-child(5)").removeAttr('data-bind-toggle'); 
+          $('.dropdown-content[data-for="platoons"]').remove();        
+         }
 		  });
   
     
