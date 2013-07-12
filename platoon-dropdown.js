@@ -109,7 +109,7 @@ BBLog.handle("add.plugin", {
                 } 
               else
                 {
-				        $(".dropdown-content[data-for="platoons"] > .row > nav").append('<a href="'+value+'"><i class="icon-white icon-friends2"></i><span>'+lastNamePlatoonDropdown+'</span></a>');           
+				        $('.dropdown-content[data-for="platoons"] > .row > nav').append('<a href="'+value+'"><i class="icon-white icon-friends2"></i><span>'+lastNamePlatoonDropdown+'</span></a>');           
 		        		}
           });
           $(".dropdown-bar").append('</nav></div></div>');
