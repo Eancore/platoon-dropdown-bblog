@@ -39,11 +39,11 @@ BBLog.handle("add.plugin", {
 			lastNamePlatoonDropdown;
 		if(storedPlatoons === null) {} else {
             $.each(storedPlatoons, function(key, value) {
-				if(key%2 === 0) {
-	                lastNamePlatoonDropdown = value;
-                } else {
-					codeHtmlPlatoonDropdown += '<div class="radar" data-id="'+key+'"><div class="source-url">'+lastNamePlatoonDropdown+' - '+value+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>';
-				}
+			         	if(key%2 === 0) {
+	                 lastNamePlatoonDropdown = value;
+                  } else {
+				           codeHtmlPlatoonDropdown += '<div class="radar" data-id="'+key+'"><div class="source-url">'+lastNamePlatoonDropdown+' - '+value+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>';
+			           	}
             });
         }
 				codeHtmlPlatoonDropdown += '<div class="spacer"></div><form method="post" action="" id="platoondropdown-additem-form"><input id="platoondropdown-firstbox" type="text" placeholder="';
@@ -58,8 +58,8 @@ BBLog.handle("add.plugin", {
 			var linknameplatoondropdown = $("#platoondropdown-firstbox").attr("value"),
         	linklinkplatoondropdown = $("#platoondropdown-secondbox").attr("value");
 			
-			if(linknameplatoondropdown != "") {
-				if(linklinkplatoondropdown != "") {
+			if(linknameplatoondropdown != "" && linklinkplatoondropdown != "") 
+      {
 					var storedPlatoons = instance.storage("PlatoonDropdown");
 					if(storedPlatoons === null) {
 						storedPlatoons = new Array(linknameplatoondropdown, linklinkplatoondropdown);
@@ -74,7 +74,6 @@ BBLog.handle("add.plugin", {
 					
 					$("#platoondropdown-firstbox").attr("value", "");
 					$("#platoondropdown-secondbox").attr("value", "");
-				}
 			}
 		});
 	},
