@@ -38,11 +38,11 @@ BBLog.handle("add.plugin", {
 		var storedPlatoons = instance.storage("PlatoonDropdown"),
 			lastNamePlatoonDropdown;
 		if(storedPlatoons === null) {} else {
-            $.each(storedPlatoons, function(keyplatoondropdown, valueplatoondropdown) {
-				if(keyplatoondropdown%2 === 0) {
-	                lastNamePlatoonDropdown = valueplatoondropdown;
+            $.each(storedPlatoons, function(key, value) {
+				if(key%2 === 0) {
+	                lastNamePlatoonDropdown = value;
                 } else {
-					codeHtmlPlatoonDropdown += '<div class="radar" data-id="'+keyplatoondropdown+'"><div class="source-url">'+lastNamePlatoonDropdown+' - '+valueplatoondropdown+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+keyplatoondropdown+'">'+BBLog.t("delete")+'</span></div>';
+					codeHtmlPlatoonDropdown += '<div class="radar" data-id="'+key+'"><div class="source-url">'+lastNamePlatoonDropdown+' - '+value+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>';
 				}
             });
         }
@@ -55,8 +55,8 @@ BBLog.handle("add.plugin", {
 		$("#platoondropdown-additem-form").bind("submit", function(e) {
 			e.preventDefault();
 			
-			var linknameplatoondropdown = $("#platoondropdown-firstbox").attr("valueplatoondropdown"),
-        	linklinkplatoondropdown = $("#platoondropdown-secondbox").attr("valueplatoondropdown");
+			var linknameplatoondropdown = $("#platoondropdown-firstbox").attr("value"),
+        	linklinkplatoondropdown = $("#platoondropdown-secondbox").attr("value");
 			
 			if(linknameplatoondropdown != "") {
 				if(linklinkplatoondropdown != "") {
@@ -68,12 +68,12 @@ BBLog.handle("add.plugin", {
 						storedPlatoons.push(linknameplatoondropdown, linklinkplatoondropdown);
 						instance.storage("PlatoonDropdown", storedPlatoons);
 					}
-					var keyplatoondropdown = jQuery.inArray(linknameplatoondropdown, storedPlatoons);
+					var key = jQuery.inArray(linknameplatoondropdown, storedPlatoons);
 					
-					$(".advanced > .spacer").before('<div class="radar" data-id="'+keyplatoondropdown+'"><div class="source-url">'+linknameplatoondropdown+' - '+linklinkplatoondropdown+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+keyplatoondropdown+'">'+BBLog.t("delete")+'</span></div>');
+					$(".advanced > .spacer").before('<div class="radar" data-id="'+key+'"><div class="source-url">'+linknameplatoondropdown+' - '+linklinkplatoondropdown+'</div><span class="bblog-button tiny delete RemovePlatoonDropdownListItem" data-id="'+key+'">'+BBLog.t("delete")+'</span></div>');
 					
-					$("#platoondropdown-firstbox").attr("valueplatoondropdown", "");
-					$("#platoondropdown-secondbox").attr("valueplatoondropdown", "");
+					$("#platoondropdown-firstbox").attr("value", "");
+					$("#platoondropdown-secondbox").attr("value", "");
 				}
 			}
 		});
@@ -99,15 +99,17 @@ BBLog.handle("add.plugin", {
           if (!$('.dropdown-content[data-for="platoons"]').length) {
           $(".base-section-menu li:nth-child(5)").addClass("has-dropdown");
           $(".base-section-menu li:nth-child(5)").attr('data-bind-toggle', 'dropdown');
-          $(".dropdown-bar").append('<div class="dropdown-content" data-for="platoons"><div class="row"><nav class="span4 dropdown-menu">');
-          $.each(storedPlatoons, function(keyplatoondropdown, valueplatoondropdown) {
-				      if(keyplatoondropdown%2 === 0) 
+          $(".dropdown-bar").append('<div class="dropdown-content" data-for="platoons"></div>');
+          $(".dropdown-content[data-for="platoons"]").append('<div class="row"></div');
+          $(".dropdown-content[data-for="platoons"] > .row").append('<nav class="span4 dropdown-menu"></nav>');
+          $.each(storedPlatoons, function(key, value) {
+				      if(key%2 === 0) 
                 {
-	              lastNamePlatoonDropdown = valueplatoondropdown;
+	              lastNamePlatoonDropdown = value;
                 } 
               else
                 {
-				        $(".dropdown-bar").append('<a href="'+valueplatoondropdown+'"><i class="icon-white icon-friends2"></i><span>'+lastNamePlatoonDropdown+'</span></a>');           
+				        $(".dropdown-content[data-for="platoons"] > .row > nav").append('<a href="'+value+'"><i class="icon-white icon-friends2"></i><span>'+lastNamePlatoonDropdown+'</span></a>');           
 		        		}
           });
           $(".dropdown-bar").append('</nav></div></div>');
@@ -115,11 +117,11 @@ BBLog.handle("add.plugin", {
         }
 		
     	$(".RemovePlatoonDropdownListItem").bind("click", function() {
-			   var keyplatoondropdown = parseInt($(this).attr("data-id"));
+			   var key = parseInt($(this).attr("data-id"));
 		     var storedPlatoons = instance.storage("PlatoonDropdown");
-			   storedPlatoons.splice(keyplatoondropdown, 2);
+			   storedPlatoons.splice(key, 2);
 		     instance.storage("PlatoonDropdown", storedPlatoons);
-		     $(".radar[data-id="+keyplatoondropdown+"]").css("display", "none");
+		     $(".radar[data-id="+key+"]").css("display", "none");
 		  });
   
     
