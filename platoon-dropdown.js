@@ -88,6 +88,7 @@ BBLog.handle("add.plugin", {
     },
     
     AddDropdown : function(instance){
+    $('.section-config > span[data-key="platoon-dropdown.button.title"]').remove();
     			var storedPlatoons = instance.storage("PlatoonDropdown");
 		
 		if(storedPlatoons === null) 
