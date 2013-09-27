@@ -3,9 +3,9 @@
 *  - adds a platoon dropdown menu
 *
 * @author dapil
-* @version 1.0
+* @version 1.0.1
 * @url https://raw.github.com/dapil/platoon-dropdown-bblog/master/platoon-dropdown.js
-* @last-edit 4. 2. 2013 6:16
+* @last-edit 27. 9. 2013 23:19
 */
 
 BBLog.handle("add.plugin", {
@@ -95,12 +95,21 @@ BBLog.handle("add.plugin", {
 	},
   
     init : function(instance){
-          instance.AddDropdown(instance);
-
+          if(BBLog.cache("mode") == "bf3"){
+	  	instance.AddDropdown(instance);
+	  }
+	  if(BBLog.cache("mode") == "bf4"){
+	  	
+	  }
     },   
 
     domchange : function(instance){
-          instance.AddDropdown(instance);
+          if(BBLog.cache("mode") == "bf3"){
+	  	instance.AddDropdown(instance);
+	  }
+	  if(BBLog.cache("mode") == "bf4"){
+	  	
+	  }
     },
     
     AddDropdown : function(instance){
