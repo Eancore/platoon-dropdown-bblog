@@ -2,7 +2,7 @@
 * Platoon Dropdown:
 *  - adds a platoon dropdown menu
 *
-* @author dapil
+* @author dapil + saving system from this plugin: http://getbblog.com/board/topic/1897/1/BFGamesList
 * @version 1.0.1
 * @url https://raw.github.com/dapil/platoon-dropdown-bblog/master/platoon-dropdown.js
 * @last-edit 27. 9. 2013 23:19
