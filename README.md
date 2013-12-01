@@ -1,4 +1,4 @@
-platoon-dropdown-bblog
+Platoon Dropdown
 ======================
 Plugins for Better Battlelog, which adds a platoon dropdown menu to Battlelog.
 
