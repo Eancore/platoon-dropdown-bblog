@@ -37,7 +37,7 @@ BBLog.handle("add.plugin", {
 PlatoonDropdownMenu : function(instance) {
     var platoondropdownmenucode = '<div class="section-title customfont">' + instance.t("plugin.name") + ' - ' + instance.t("plugin.description") + '</div><div class="section-description"><p>' + instance.t("text.description") + '</p></div>';
     var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
-    if(platoondropdownstoredplatoons == null || platoondropdown-storedplatoons=="")
+    if(platoondropdownstoredplatoons == null || platoondropdownstoredplatoons=="")
     {}
     else
     {
@@ -70,7 +70,7 @@ PlatoonDropdownMenu : function(instance) {
     
 AddDropdown : function(instance){
     var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
-    if(platoondropdownstoredplatoons == null || platoondropdown-storedplatoons=="")
+    if(platoondropdownstoredplatoons == null || platoondropdownstoredplatoons=="")
     {}
     else
     {
