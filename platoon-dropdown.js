@@ -44,7 +44,7 @@ BBLog.handle("add.plugin", {
       $.each(platoondropdownstoredplatoons, function(index,value) {
         var item = value.split("||||");
         platoondropdownmenucode += '<div class="radar"><div class="source-url">' + item[0] + ' - ' + item[1] +'</div><span class="bblog-button tiny delete" data-pdindex="'+index+'">' + BBLog.t("delete") + '</span></div>';        
-      }
+      });
     }
     platoondropdownmenucode += '<div class="spacer"></div><input type="text" class="platoondropdown-name"></input><input type="text" class="platoondropdown-id"></input><span class="bblog-button tiny">' + BBLog.t("save") + '</span>';
     $(".bblog-options > .advanced").html(platoondropdownmenucode).fadeIn('slow');
