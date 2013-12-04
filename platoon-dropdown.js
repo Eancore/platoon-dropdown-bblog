@@ -103,14 +103,14 @@ AddDropdown : function(instance){
          }
 		});    
     $(".pd-add").click(function() {
-         var pdname = $(".pd-name").text();
-         var pdid = $(".pd-id").text();
-         var newitem = pdname + '||||' + pdid;
+         var pdname = $(".pd-name").val();
+         var pdid = $(".pd-id").val();
+         var newitem = pd name + '||||' + pdid;
          var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
          platoondropdownstoredplatoons.push(newitem);
          instance.storage("platoondropdownstoredplatoons", platoondropdownstoredplatoons);
-         $(".pd-name").text("");
-         $(".pd-id").text("");
+         $(".pd-name").val("");
+         $(".pd-id").val("");
          
 		});     
 },
