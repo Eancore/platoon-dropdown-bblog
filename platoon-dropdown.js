@@ -104,6 +104,7 @@ AddDropdown : function(instance){
          }
 		});    
     $(".pd-add").click(function() {
+         console.log("clicky");
          var pdname = $(".pd-name").val();
          console.log(pdname);
          var pdid = $(".pd-id").val();
