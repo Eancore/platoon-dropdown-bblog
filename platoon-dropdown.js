@@ -105,7 +105,7 @@ AddDropdown : function(instance){
     $(".pd-add").click(function() {
          var pdname = $(".pd-name").val();
          var pdid = $(".pd-id").val();
-         var newitem = pd name + '||||' + pdid;
+         var newitem = pdname + '||||' + pdid;
          var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
          platoondropdownstoredplatoons.push(newitem);
          instance.storage("platoondropdownstoredplatoons", platoondropdownstoredplatoons);
