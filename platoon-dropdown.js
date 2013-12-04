@@ -80,7 +80,7 @@ AddDropdown : function(instance){
             $(".dropdown-bar").append('<div class="dropdown-content" data-for="platoons"></div>');
             $('.dropdown-content[data-for="platoons"]').append('<div class="row"></div>');
             $('.dropdown-content[data-for="platoons"] > .row').append('<nav class="span4 dropdown-menu"></nav>');
-            $.each(storedPlatoons, function(index, value) {
+            $.each(platoondropdownstoredplatoons, function(index, value) {
                   var item = value.split("||||");
   				        $('.dropdown-content[data-for="platoons"] > .row > nav').append('<a href="http://battlelog.battlefield.com/bf3/'+BBLog.cache("battlelog.language")+'platoon/'+item[1]+'/" data-pdindex="'+index+'"><i class="icon-white icon-friends2"></i><span>'+item[0]+'</span></a>');           
             });
