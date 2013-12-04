@@ -43,7 +43,7 @@ PlatoonDropdownMenu : function(instance) {
     {
       $.each(platoondropdownstoredplatoons, function(index,value) {
         var item = value.split("||||");
-        platoondropdownmenucode += '<div class="radar"><div class="source-url">' + item[0] + ' - ' + item[1] +'</div><span class="bblog-button tiny delete pd-delete" data-pdindex="'+index+'">' + BBLog.t("delete") + '</span></div>';        
+        platoondropdownmenucode += '<div class="radar" style="color: #fff !important; background-color: transparent !important"><div class="source-url">' + item[0] + ' - ' + item[1] +'</div><span class="bblog-button tiny delete pd-delete" data-pdindex="'+index+'">' + BBLog.t("delete") + '</span></div>';        
       });
     }
     platoondropdownmenucode += '<div class="spacer"></div><input type="text" class="pd-name" style="width: 45%; margin-right: 10px"></input><input type="text" class="pd-id" style="width: 45%; margin-right: 10px"></input><span class="bblog-button tiny pd-add" style="vertical-align: middle">' + BBLog.t("add") + '</span>';
