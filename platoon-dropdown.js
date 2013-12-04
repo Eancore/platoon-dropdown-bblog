@@ -35,19 +35,19 @@ BBLog.handle("add.plugin", {
     },
     
     PlatoonDropdownMenu : function(instance) {
-    var platoondropdown-menucode = '<div class="section-title customfont">' + instance.t("plugin.name") + ' - ' + instance.t("plugin.description") + '</div><div class="section-description"><p>' + instance.t("text.description") + '</p></div>';
-    var platoondropdown-storedplatoons = instance.storage("platoondropdown-storedplatoons");
-    if(platoondropdown-storedplatoons == null || platoondropdown-storedplatoons=="")
+    var platoondropdownmenucode = '<div class="section-title customfont">' + instance.t("plugin.name") + ' - ' + instance.t("plugin.description") + '</div><div class="section-description"><p>' + instance.t("text.description") + '</p></div>';
+    var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
+    if(platoondropdownstoredplatoons == null || platoondropdown-storedplatoons=="")
     {}
     else
     {
-      $.each(platoondropdown-storedplatoons, function(index,value) {
+      $.each(platoondropdownstoredplatoons, function(index,value) {
         var item = value.split("||||");
-        platoondropdown-menucode += '<div class="radar"><div class="source-url">' + item[0] + ' - ' + item[1] +'</div><span class="bblog-button tiny delete" data-pdindex="'+index+'">' + BBLog.t("delete") + '</span></div>';        
+        platoondropdownmenucode += '<div class="radar"><div class="source-url">' + item[0] + ' - ' + item[1] +'</div><span class="bblog-button tiny delete" data-pdindex="'+index+'">' + BBLog.t("delete") + '</span></div>';        
       }
     }
-    platoondropdown-menucode += '<div class="spacer"></div><input type="text" class="platoondropdown-name"></input><input type="text" class="platoondropdown-id"></input><span class="bblog-button tiny">' + BBLog.t("save") + '</span>';
-    $(".bblog-options > .advanced").html(PlatoonDropdownMenuCode).fadeIn('slow');
+    platoondropdownmenucode += '<div class="spacer"></div><input type="text" class="platoondropdown-name"></input><input type="text" class="platoondropdown-id"></input><span class="bblog-button tiny">' + BBLog.t("save") + '</span>';
+    $(".bblog-options > .advanced").html(platoondropdownmenucode).fadeIn('slow');
     
 
 
