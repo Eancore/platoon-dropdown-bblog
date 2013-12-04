@@ -34,7 +34,7 @@ BBLog.handle("add.plugin", {
         },
     },
     
-    PlatoonDropdownMenu : function(instance) {
+PlatoonDropdownMenu : function(instance) {
     var platoondropdownmenucode = '<div class="section-title customfont">' + instance.t("plugin.name") + ' - ' + instance.t("plugin.description") + '</div><div class="section-description"><p>' + instance.t("text.description") + '</p></div>';
     var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
     if(platoondropdownstoredplatoons == null || platoondropdown-storedplatoons=="")
@@ -43,17 +43,12 @@ BBLog.handle("add.plugin", {
     {
       $.each(platoondropdownstoredplatoons, function(index,value) {
         var item = value.split("||||");
-        platoondropdownmenucode += '<div class="radar"><div class="source-url">' + item[0] + ' - ' + item[1] +'</div><span class="bblog-button tiny delete" data-pdindex="'+index+'">' + BBLog.t("delete") + '</span></div>';        
+        platoondropdownmenucode += '<div class="radar"><div class="source-url">' + item[0] + ' - ' + item[1] +'</div><span class="bblog-button tiny delete pd-delete" data-pdindex="'+index+'">' + BBLog.t("delete") + '</span></div>';        
       });
     }
-    platoondropdownmenucode += '<div class="spacer"></div><input type="text" class="platoondropdown-name"></input><input type="text" class="platoondropdown-id"></input><span class="bblog-button tiny">' + BBLog.t("save") + '</span>';
+    platoondropdownmenucode += '<div class="spacer"></div><input type="text" class="platoondropdown-name" style="width: 45%; margin-right: 10px"></input><input type="text" class="platoondropdown-id" style="width: 45%; margin-right: 10px"></input><span class="bblog-button tiny pd-add" style="vertical-align: middle">' + BBLog.t("add") + '</span>';
     $(".bblog-options > .advanced").html(platoondropdownmenucode).fadeIn('slow');
-    
-
-
-
-
-	},
+},
   
  init : function(instance){
           if(BBLog.cache("mode") == "bf3"){
@@ -73,52 +68,46 @@ BBLog.handle("add.plugin", {
 	             }
              },
     
-    AddDropdown : function(instance){
-    $('.section-config > span[data-key="platoon-dropdown.button.title"]').remove();
-    			var storedPlatoons = instance.storage("PlatoonDropdown");
-		
-		if(storedPlatoons === null || storedPlatoons=="") 
-         {
-         }
-    
-    else {
+AddDropdown : function(instance){
+    var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
+    if(platoondropdownstoredplatoons == null || platoondropdown-storedplatoons=="")
+    {}
+    else
+    {
           if (!$('.dropdown-content[data-for="platoons"]').length) {
-          $(".base-section-menu li:nth-child(5)").addClass("has-dropdown");
-          $(".base-section-menu li:nth-child(5)").attr('data-bind-toggle', 'dropdown');
-          $(".dropdown-bar").append('<div class="dropdown-content" data-for="platoons"></div>');
-          $('.dropdown-content[data-for="platoons"]').append('<div class="row"></div>');
-          $('.dropdown-content[data-for="platoons"] > .row').append('<nav class="span4 dropdown-menu"></nav>');
-          $.each(storedPlatoons, function(key, value) {
-				      if(key%2 === 0) 
-                {
-	              lastNamePlatoonDropdown = value;
-                } 
-              else
-                {
-				        $('.dropdown-content[data-for="platoons"] > .row > nav').append('<a href="http://battlelog.battlefield.com/bf3/'+BBLog.cache("battlelog.language")+'platoon/'+value+'/" data-id="'+key+'"><i class="icon-white icon-friends2"></i><span>'+lastNamePlatoonDropdown+'</span></a>');           
-		        		}
-          });
-          $(".dropdown-bar").append('</nav></div></div>');
+            $(".base-section-menu li[data-page='platoons']").addClass("has-dropdown");
+            $(".base-section-menu li[data-page='platoons']").attr('data-bind-toggle', 'dropdown');
+            $(".dropdown-bar").append('<div class="dropdown-content" data-for="platoons"></div>');
+            $('.dropdown-content[data-for="platoons"]').append('<div class="row"></div>');
+            $('.dropdown-content[data-for="platoons"] > .row').append('<nav class="span4 dropdown-menu"></nav>');
+            $.each(storedPlatoons, function(index, value) {
+                  var item = value.split("||||");
+  				        $('.dropdown-content[data-for="platoons"] > .row > nav').append('<a href="http://battlelog.battlefield.com/bf3/'+BBLog.cache("battlelog.language")+'platoon/'+item[1]+'/" data-pdindex="'+index+'"><i class="icon-white icon-friends2"></i><span>'+item[0]+'</span></a>');           
+            });
+            $(".dropdown-bar").append('</nav></div></div>');
           }
-        }
+    }
 		
-    	$(".RemovePlatoonDropdownListItem").bind("click", function() {
-			   var key = parseInt($(this).attr("data-id"));
-		     var storedPlatoons = instance.storage("PlatoonDropdown");
-			   storedPlatoons.splice(key-1, 2);
-		     instance.storage("PlatoonDropdown", storedPlatoons);
-		     $(".radar[data-id="+key+"]").css("display", "none");
-         if(storedPlatoons === null || storedPlatoons=="") 
+    $(".pd-delete").click(function() {
+			   var index = $(this).attr("data-pdindex");
+		     var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
+			   platoondropdownstoredplatoons = platoondropdownstoredplatoons.splice(index, 1);
+		     instance.storage("platoondropdownstoredplatoons", platoondropdownstoredplatoons);
+		     $(".pd-delete[data-pdindex="+index+"]").parent().css("display", "none");
+         $('.dropdown-content[data-for="platoons"] > .row > nav > a[data-pdindex="' + index + '"]').css("display", "none");
+         if(platoondropdownstoredplatoons == null || platoondropdownstoredplatoons=="") 
          {
-          $(".base-section-menu li:nth-child(5)").removeClass("has-dropdown");
-          $(".base-section-menu li:nth-child(5)").removeAttr('data-bind-toggle'); 
+          $(".base-section-menu li[data-page='platoons']").removeClass("has-dropdown");
+          $(".base-section-menu li[data-page='platoons']").removeAttr('data-bind-toggle'); 
           $('.dropdown-content[data-for="platoons"]').remove();        
          }
-		  });
-  
-    
-    },
-    });
+		});    
+    $(".pd-add").click(function() {
+         
+         
+		});     
+},
+});
 
 
 
