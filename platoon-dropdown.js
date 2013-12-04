@@ -13,7 +13,7 @@ BBLog.handle("add.plugin", {
     name : "Platoon Dropdown",
     
     configFlags : [
-            ["button.title", 1, function(instance){instance.PlatoonDropdownMenu(instance);}],
+            ["plugin.description", 1, function(instance){instance.PlatoonDropdownMenu(instance);}],
     ],
 
     translations : {
