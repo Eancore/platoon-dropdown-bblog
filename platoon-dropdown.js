@@ -103,7 +103,9 @@ AddDropdown : function(instance){
          }
 		});    
     $(".pd-add").click(function() {
-         var newitem = $(".pd-name").text() + '||||' + $(".pd-id").text();
+         var pd-name = $(".pd-name").text();
+         var pd-id = $(".pd-id").text();
+         var newitem = pd-name + '||||' + pd-id;
          var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
          platoondropdownstoredplatoons.push(newitem);
          instance.storage("platoondropdownstoredplatoons", platoondropdownstoredplatoons);
