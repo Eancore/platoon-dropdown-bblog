@@ -46,7 +46,7 @@ PlatoonDropdownMenu : function(instance) {
         platoondropdownmenucode += '<div class="radar"><div class="source-url">' + item[0] + ' - ' + item[1] +'</div><span class="bblog-button tiny delete pd-delete" data-pdindex="'+index+'">' + BBLog.t("delete") + '</span></div>';        
       });
     }
-    platoondropdownmenucode += '<div class="spacer"></div><input type="text" class="platoondropdown-name" style="width: 45%; margin-right: 10px"></input><input type="text" class="platoondropdown-id" style="width: 45%; margin-right: 10px"></input><span class="bblog-button tiny pd-add" style="vertical-align: middle">' + BBLog.t("add") + '</span>';
+    platoondropdownmenucode += '<div class="spacer"></div><input type="text" class="pd-name" style="width: 45%; margin-right: 10px"></input><input type="text" class="pd-id" style="width: 45%; margin-right: 10px"></input><span class="bblog-button tiny pd-add" style="vertical-align: middle">' + BBLog.t("add") + '</span>';
     $(".bblog-options > .advanced").html(platoondropdownmenucode).fadeIn('slow');
 },
   
@@ -103,7 +103,12 @@ AddDropdown : function(instance){
          }
 		});    
     $(".pd-add").click(function() {
-         
+         var newitem = $(".pd-name").text() + '||||' + $(".pd-id").text();
+         var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
+         platoondropdownstoredplatoons.push(newitem);
+         instance.storage("platoondropdownstoredplatoons", platoondropdownstoredplatoons);
+         $(".pd-name").text("");
+         $(".pd-id").text("");
          
 		});     
 },
