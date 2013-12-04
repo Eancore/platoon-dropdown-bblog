@@ -52,7 +52,7 @@ PlatoonDropdownMenu : function(instance) {
   
  init : function(instance){
           if(BBLog.cache("mode") == "bf3"){
-	         //  instance.AddDropdown(instance);
+	           instance.AddDropdown(instance);
 	        }
 	        if(BBLog.cache("mode") == "bf4"){
 	  	
@@ -61,7 +61,7 @@ PlatoonDropdownMenu : function(instance) {
 
  domchange : function(instance){
                if(BBLog.cache("mode") == "bf3"){
-	  	           // instance.AddDropdown(instance);
+	  	           instance.AddDropdown(instance);
 	             }
 	             if(BBLog.cache("mode") == "bf4"){
 	  	
