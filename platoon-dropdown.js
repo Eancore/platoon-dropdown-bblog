@@ -92,6 +92,7 @@ AddDropdown : function(instance){
 			   var index = $(this).attr("data-pdindex");
 		     var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
 			   platoondropdownstoredplatoons = platoondropdownstoredplatoons.splice(index, 1);
+         console.log(platoondropdownstoredplatoons);
 		     instance.storage("platoondropdownstoredplatoons", platoondropdownstoredplatoons);
 		     $(".pd-delete[data-pdindex="+index+"]").parent().css("display", "none");
          $('.dropdown-content[data-for="platoons"] > .row > nav > a[data-pdindex="' + index + '"]').css("display", "none");
