@@ -109,7 +109,14 @@ AddDropdown : function(instance){
          var newitem = pdname + '||||' + pdid;
          console.log(newitem);
          var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
+         if(platoondropdownstoredplatoons == null || platoondropdownstoredplatoons=="") 
+         {
+          platoondropdownstoredplatoons = [newitem];
+         }
+         else
+         {
          platoondropdownstoredplatoons.push(newitem);
+         }
          instance.storage("platoondropdownstoredplatoons", platoondropdownstoredplatoons);
          $(".pd-name").val("");
          $(".pd-id").val("");
