@@ -19,23 +19,23 @@ BBLog.handle("add.plugin", {
     translations : {
         "en" : {
             "plugin.description" : "Manage displayed platoons",
-            "text.description" : "Here you can choose, which platoons will be displayed. You can get the ID of a platoon from the URL of its page, for example: in http://battlelog.battlefield.com/bf3/"+BBLog.cache('battlelog.language')+"platoon/2832655241424190855/, the ID is <strong>2832655241424190855</strong>.",
-            "menu.addbutton" : "Add",
-            "textbox.name" : "Displayed name",
-            "textbox.id" : "ID of platoon",
+            "text.description" : "Here you can choose which platoons will be displayed. You can get the ID of a platoon from the URL of its page, for example: in http://battlelog.battlefield.com/bf3/en/platoon/2832655241424190855/, the ID is <strong>2832655241424190855</strong>.",
+            "button.add" : "Add",
+            "hint.name" : "Displayed name",
+            "hint.id" : "ID of platoon",
          },
         "cs" : {
             "plugin.name" : "Vyjížděcí menu pro čety",
             "plugin.description" : "Spravovat zobrazené čety",
-            "text.description" : "Zde můžete určit, které čety se budou zobrazovat. ID čety můžete získat z URL stránky čety, například pro http://battlelog.battlefield.com/bf3/"+BBLog.cache('battlelog.language')+"platoon/2832655241424190855/ je ID <strong>2832655241424190855</strong>.",
-            "menu.addbutton" : "Přidat",
-            "textbox.name" : "Zobrazované jméno",
-            "textbox.id" : "ID čety",            
+            "text.description" : "Zde můžete určit, které čety se budou zobrazovat. ID čety můžete získat z URL stránky čety, například pro http://battlelog.battlefield.com/bf3/cs/platoon/2832655241424190855/ je ID <strong>2832655241424190855</strong>.",
+            "button.add" : "Přidat",
+            "hint.name" : "Zobrazované jméno",
+            "hint.id" : "ID čety",            
         },
     },
     
 LoadPlatoonList : function(instance) {
-    var platoondropdownmenucode = '<div class="section-title customfont">' + instance.t("plugin.description") + '</div><div class="section-description"><p>' + instance.t("text.description") + '</p></div>';
+    var platoondropdownmenucode = '<div class="section-title customfont">' + BBLog.t("plugin.description") + '</div><div class="section-description"><p>' + BBLog.t("text.description") + '</p></div>';
     var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
     if(platoondropdownstoredplatoons == null || platoondropdownstoredplatoons=="")
     {}
@@ -46,7 +46,7 @@ LoadPlatoonList : function(instance) {
         platoondropdownmenucode += '<div class="radar" style="color: #fff !important; background-color: transparent !important"><div class="source-url">' + item[0] + ' - ' + item[1] +'</div><span class="bblog-button tiny delete pd-delete" data-pdindex="'+index+'">' + BBLog.t("delete") + '</span></div>';        
       });
     }
-    platoondropdownmenucode += '<div class="spacer"></div><input type="text" class="pd-name" style="width: 45%; margin-right: 10px"></input><input type="text" class="pd-id" style="width: 45%; margin-right: 10px"></input><span class="bblog-button tiny pd-add" style="vertical-align: middle">' + BBLog.t("add") + '</span>';
+    platoondropdownmenucode += '<div class="spacer"></div><input type="text" class="pd-name" placeholder="' + BBLog.t("hint.name") + '" style="width: 45%; margin-right: 10px"></input><input type="text" class="pd-id" placeholder="' + BBLog.t("hint.id") + '" style="width: 45%; margin-right: 10px"></input><span class="bblog-button tiny pd-add" style="vertical-align: middle">' + BBLog.t("button.add") + '</span>';
     $(".bblog-options > .advanced").html(platoondropdownmenucode);
   },  
   
