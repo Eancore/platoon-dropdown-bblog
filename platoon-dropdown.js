@@ -27,7 +27,7 @@ BBLog.handle("add.plugin", {
         "cs" : {
             "plugin.name" : "Vyjížděcí menu pro čety",
             "plugin.description" : "Spravovat zobrazené čety",
-            "text.description" : "Zde můžete určit, které čety se budou zobrazovat. ID čety můžete získat z URL stránky čety, například pro http://battlelog.battlefield.com/bf3/cs/platoon/2832655241424190855/ je ID <strong>2832655241424190855</strong>.",
+            "text.description" : "Zde můžete určit, které čety se budou zobrazovat. ID čety můžete získat z URL stránky čety, například pro http://battlelog.battlefield.com/bf3/"+BBLog.cache('battlelog.language')+"platoon/2832655241424190855/ je ID <strong>2832655241424190855</strong>.",
             "menu.addbutton" : "Přidat",
             "textbox.name" : "Zobrazované jméno",
             "textbox.id" : "ID čety",            
@@ -68,7 +68,7 @@ PlatoonDropdownMenu : function(instance) {
  domchange : function(instance){
         if(BBLog.cache("mode") == "bf3"){}
 	      if(BBLog.cache("mode") == "bf4"){
-          if($(".base-section-menu > li[data-page='platoons']").length < 1) {
+          if(!$(".base-section-menu > li[data-page='platoons']").length) {
 	  	      $(".base-section-menu").append('<li data-page="platoons"><a class="wfont" href="/bf3/'+BBLog.cache("battlelog.language")+'platoon/landing/">Platoons</a></li>');
           }
 	      }
