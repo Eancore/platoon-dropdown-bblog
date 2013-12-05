@@ -117,10 +117,12 @@ AddDropdown : function(instance){
          if(platoondropdownstoredplatoons == null || platoondropdownstoredplatoons=="") 
          {
           platoondropdownstoredplatoons = [newitem];
+          console.log("new");
          }
          else
          {
          platoondropdownstoredplatoons.push(newitem);
+         console.log("exist");
          }
          instance.storage("platoondropdownstoredplatoons", platoondropdownstoredplatoons);
          instance.LoadPlatoonList(instance);
