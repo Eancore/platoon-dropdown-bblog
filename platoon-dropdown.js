@@ -2,9 +2,9 @@
 * Platoon Dropdown:
 *  - adds a platoon dropdown menu
 *
-* @author dapil + saving system from this plugin: http://getbblog.com/board/topic/1897/1/BFGamesList
-* @version 1.0.1
-* @url https://raw.github.com/dapil/platoon-dropdown-bblog/master/platoon-dropdown.js
+* @author dapil
+* @version 2.0.0
+* @url http://dapil.github.io/platoon-dropdown-bblog/master/platoon-dropdown.js
 * @last-edit 27. 9. 2013 23:19
 */
 
@@ -19,7 +19,7 @@ BBLog.handle("add.plugin", {
     translations : {
         "en" : {
             "plugin.description" : "Manage displayed platoons",
-            "text.description" : "Here you can choose, which platoons will be displayed. You can get the ID of a platoon from the URL of its page, for example: in http://battlelog.battlefield.com/bf3/cs/platoon/2832655241424190855/, the ID is <strong>2832655241424190855</strong>.",
+            "text.description" : "Here you can choose, which platoons will be displayed. You can get the ID of a platoon from the URL of its page, for example: in http://battlelog.battlefield.com/bf3/'+BBLog.cache("battlelog.language")+'platoon/2832655241424190855/, the ID is <strong>2832655241424190855</strong>.",
             "menu.addbutton" : "Add",
             "textbox.name" : "Displayed name",
             "textbox.id" : "ID of platoon",
@@ -35,14 +35,12 @@ BBLog.handle("add.plugin", {
     },
     
 LoadPlatoonList : function(instance) {
-    console.log("load");
-    var platoondropdownmenucode = '<div class="section-title customfont">' + instance.t("plugin.name") + ' - ' + instance.t("plugin.description") + '</div><div class="section-description"><p>' + instance.t("text.description") + '</p></div>';
+    var platoondropdownmenucode = '<div class="section-title customfont">' + instance.t("plugin.description") + '</div><div class="section-description"><p>' + instance.t("text.description") + '</p></div>';
     var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
     if(platoondropdownstoredplatoons == null || platoondropdownstoredplatoons=="")
-    {console.log("no");}
+    {}
     else
     {
-      console.log("exis");
       $.each(platoondropdownstoredplatoons, function(index,value) {
         var item = value.split("||||");
         platoondropdownmenucode += '<div class="radar" style="color: #fff !important; background-color: transparent !important"><div class="source-url">' + item[0] + ' - ' + item[1] +'</div><span class="bblog-button tiny delete pd-delete" data-pdindex="'+index+'">' + BBLog.t("delete") + '</span></div>';        
@@ -58,22 +56,20 @@ PlatoonDropdownMenu : function(instance) {
 },
   
  init : function(instance){
-          if(BBLog.cache("mode") == "bf3"){
-	           instance.AddDropdown(instance);
-	        }
-	        if(BBLog.cache("mode") == "bf4"){
-	  	
-	        }
+        if(BBLog.cache("mode") == "bf3"){}
+	      if(BBLog.cache("mode") == "bf4"){
+	  	      $(".base-section-menu").append('<li data-page="platoons"><a class="wfont" href="/bf3/'+BBLog.cache("battlelog.language")+'platoon/landing/">Platoons</a></li>');
+	      }
+        instance.AddDropdown(instance);
         },   
 
  domchange : function(instance){
-               if(BBLog.cache("mode") == "bf3"){
-	  	           instance.AddDropdown(instance);
-	             }
-	             if(BBLog.cache("mode") == "bf4"){
-	  	
-	             }
-             },
+        if(BBLog.cache("mode") == "bf3"){}
+	      if(BBLog.cache("mode") == "bf4"){
+	  	      $(".base-section-menu").append('<li data-page="platoons"><a class="wfont" href="/bf3/'+BBLog.cache("battlelog.language")+'platoon/landing/">Platoons</a></li>');
+	      }
+        instance.AddDropdown(instance);
+        },   
     
 AddDropdown : function(instance){
     var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
@@ -114,17 +110,14 @@ AddDropdown : function(instance){
          var pdname = $(".pd-name").val();
          var pdid = $(".pd-id").val();
          var newitem = pdname + '||||' + pdid;
-         console.log(newitem);
          var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
          if(platoondropdownstoredplatoons == null || platoondropdownstoredplatoons=="") 
          {
           platoondropdownstoredplatoons = [newitem];
-          console.log("new");
          }
          else
          {
          platoondropdownstoredplatoons.push(newitem);
-         console.log("exist");
          }
          instance.storage("platoondropdownstoredplatoons", platoondropdownstoredplatoons);
          instance.LoadPlatoonList(instance);
