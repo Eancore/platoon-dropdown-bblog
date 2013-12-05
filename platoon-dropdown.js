@@ -19,7 +19,7 @@ BBLog.handle("add.plugin", {
     translations : {
         "en" : {
             "plugin.description" : "Manage displayed platoons",
-            "text.description" : "Here you can choose, which platoons will be displayed. You can get the ID of a platoon from the URL of its page, for example: in http://battlelog.battlefield.com/bf3/'+BBLog.cache("battlelog.language")+'platoon/2832655241424190855/, the ID is <strong>2832655241424190855</strong>.",
+            "text.description" : "Here you can choose, which platoons will be displayed. You can get the ID of a platoon from the URL of its page, for example: in http://battlelog.battlefield.com/bf3/"+BBLog.cache('battlelog.language')+"platoon/2832655241424190855/, the ID is <strong>2832655241424190855</strong>.",
             "menu.addbutton" : "Add",
             "textbox.name" : "Displayed name",
             "textbox.id" : "ID of platoon",
