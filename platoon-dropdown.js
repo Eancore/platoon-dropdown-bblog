@@ -39,9 +39,10 @@ LoadPlatoonList : function(instance) {
     var platoondropdownmenucode = '<div class="section-title customfont">' + instance.t("plugin.name") + ' - ' + instance.t("plugin.description") + '</div><div class="section-description"><p>' + instance.t("text.description") + '</p></div>';
     var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
     if(platoondropdownstoredplatoons == null || platoondropdownstoredplatoons=="")
-    {}
+    {console.log("no");}
     else
     {
+      console.log("exis");
       $.each(platoondropdownstoredplatoons, function(index,value) {
         var item = value.split("||||");
         platoondropdownmenucode += '<div class="radar" style="color: #fff !important; background-color: transparent !important"><div class="source-url">' + item[0] + ' - ' + item[1] +'</div><span class="bblog-button tiny delete pd-delete" data-pdindex="'+index+'">' + BBLog.t("delete") + '</span></div>';        
