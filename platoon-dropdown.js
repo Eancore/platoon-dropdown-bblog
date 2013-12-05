@@ -58,7 +58,9 @@ PlatoonDropdownMenu : function(instance) {
  init : function(instance){
         if(BBLog.cache("mode") == "bf3"){}
 	      if(BBLog.cache("mode") == "bf4"){
+          if($(".base-section-menu > li[data-page='platoons']").length < 1) {
 	  	      $(".base-section-menu").append('<li data-page="platoons"><a class="wfont" href="/bf3/'+BBLog.cache("battlelog.language")+'platoon/landing/">Platoons</a></li>');
+          }
 	      }
         instance.AddDropdown(instance);
         },   
@@ -66,10 +68,12 @@ PlatoonDropdownMenu : function(instance) {
  domchange : function(instance){
         if(BBLog.cache("mode") == "bf3"){}
 	      if(BBLog.cache("mode") == "bf4"){
+          if($(".base-section-menu > li[data-page='platoons']").length < 1) {
 	  	      $(".base-section-menu").append('<li data-page="platoons"><a class="wfont" href="/bf3/'+BBLog.cache("battlelog.language")+'platoon/landing/">Platoons</a></li>');
+          }
 	      }
         instance.AddDropdown(instance);
-        },   
+        },     
     
 AddDropdown : function(instance){
     var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
