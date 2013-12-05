@@ -35,6 +35,7 @@ BBLog.handle("add.plugin", {
     },
     
 LoadPlatoonList : function(instance) {
+    consolde.log("load");
     var platoondropdownmenucode = '<div class="section-title customfont">' + instance.t("plugin.name") + ' - ' + instance.t("plugin.description") + '</div><div class="section-description"><p>' + instance.t("text.description") + '</p></div>';
     var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
     if(platoondropdownstoredplatoons == null || platoondropdownstoredplatoons=="")
