@@ -34,7 +34,7 @@ BBLog.handle("add.plugin", {
         },
     },
     
-PlatoonDropdownMenu : function(instance) {
+LoadPlatoonList : function(instance) {
     var platoondropdownmenucode = '<div class="section-title customfont">' + instance.t("plugin.name") + ' - ' + instance.t("plugin.description") + '</div><div class="section-description"><p>' + instance.t("text.description") + '</p></div>';
     var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
     if(platoondropdownstoredplatoons == null || platoondropdownstoredplatoons=="")
@@ -47,7 +47,12 @@ PlatoonDropdownMenu : function(instance) {
       });
     }
     platoondropdownmenucode += '<div class="spacer"></div><input type="text" class="pd-name" style="width: 45%; margin-right: 10px"></input><input type="text" class="pd-id" style="width: 45%; margin-right: 10px"></input><span class="bblog-button tiny pd-add" style="vertical-align: middle">' + BBLog.t("add") + '</span>';
-    $(".bblog-options > .advanced").html(platoondropdownmenucode).fadeIn('slow');
+    $(".bblog-options > .advanced").html(platoondropdownmenucode);
+  },  
+  
+PlatoonDropdownMenu : function(instance) {
+    instance.LoadPlatoonList(instance);
+    $(".bblog-options > .advanced").fadeIn('slow');
 },
   
  init : function(instance){
@@ -94,8 +99,8 @@ AddDropdown : function(instance){
 			   platoondropdownstoredplatoons.splice(index, 1);
          console.log(platoondropdownstoredplatoons);
 		     instance.storage("platoondropdownstoredplatoons", platoondropdownstoredplatoons);
-		     $(".pd-delete[data-pdindex="+index+"]").parent().css("display", "none");
          $('.dropdown-content[data-for="platoons"] > .row > nav > a[data-pdindex="' + index + '"]').css("display", "none");
+         instance.LoadPlatoonList(instance);
          if(platoondropdownstoredplatoons == null || platoondropdownstoredplatoons=="") 
          {
           $(".base-section-menu li[data-page='platoons']").removeClass("has-dropdown");
@@ -104,12 +109,9 @@ AddDropdown : function(instance){
          }
 		});    
     $(".pd-add").click(function() {
-         console.log("clicky");
          var pdname = $(".pd-name").val();
-         console.log(pdname);
          var pdid = $(".pd-id").val();
          var newitem = pdname + '||||' + pdid;
-         console.log(newitem);
          var platoondropdownstoredplatoons = instance.storage("platoondropdownstoredplatoons");
          if(platoondropdownstoredplatoons == null || platoondropdownstoredplatoons=="") 
          {
@@ -120,8 +122,7 @@ AddDropdown : function(instance){
          platoondropdownstoredplatoons.push(newitem);
          }
          instance.storage("platoondropdownstoredplatoons", platoondropdownstoredplatoons);
-         $(".pd-name").val("");
-         $(".pd-id").val("");
+         instance.LoadPlatoonList(instance);
          
 		});     
 },
