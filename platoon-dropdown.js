@@ -121,6 +121,7 @@ AddDropdown : function(instance){
          }
          else
          {
+         console.log("added");
          platoondropdownstoredplatoonsadd.push(newitem);
          }
          instance.storage("platoondropdownstoredplatoons", platoondropdownstoredplatoonsadd);
