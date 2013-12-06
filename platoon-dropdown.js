@@ -4,7 +4,7 @@
 *
 * @author dapil
 * @version 2.0.0
-* @url http://dapil.github.io/platoon-dropdown-bblog/master/platoon-dropdown.js
+* @url http://dapil.github.io/platoon-dropdown-bblog/platoon-dropdown.js
 * @last-edit 6. 12. 2013 23:28
 */
 
