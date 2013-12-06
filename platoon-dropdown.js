@@ -60,7 +60,7 @@ init : function(instance){
           instance.AddDropdown(instance);
         }
 	      if(BBLog.cache("mode") == "bf4"){
-          if($(".base-section-menu > li[data-page='platoons']").length < 1) {
+          if(!$(".base-section-menu > li[data-page='platoons']").length) {
 	  	        $(".base-section-menu").append('<li data-page="platoons"><a class="wfont" href="/bf3/'+BBLog.cache("battlelog.language")+'platoon/landing/">Platoons</a></li>');
           }
 	      }
@@ -71,7 +71,7 @@ domchange : function(instance){
           instance.AddDropdown(instance);
         }
 	      if(BBLog.cache("mode") == "bf4"){
-          if($(".base-section-menu > li[data-page='platoons']").length < 1) {
+          if(!$(".base-section-menu > li[data-page='platoons']").length) {
 	  	        $(".base-section-menu").append('<li data-page="platoons"><a class="wfont" href="/bf3/'+BBLog.cache("battlelog.language")+'platoon/landing/">Platoons</a></li>');
           }
 	      }
