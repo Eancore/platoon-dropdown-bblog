@@ -5,7 +5,7 @@
 * @author dapil
 * @version 2.0.0
 * @url http://dapil.github.io/platoon-dropdown-bblog/master/platoon-dropdown.js
-* @last-edit 27. 9. 2013 23:19
+* @last-edit 6. 12. 2013 23:28
 */
 
 BBLog.handle("add.plugin", {
@@ -56,23 +56,25 @@ PlatoonDropdownMenu : function(instance) {
 },
   
 init : function(instance){
-        if(BBLog.cache("mode") == "bf3"){}
+        if(BBLog.cache("mode") == "bf3"){
+          instance.AddDropdown(instance);
+        }
 	      if(BBLog.cache("mode") == "bf4"){
           if($(".base-section-menu > li[data-page='platoons']").length < 1) {
-	  	      $(".base-section-menu").append('<li data-page="platoons"><a class="wfont" href="/bf3/'+BBLog.cache("battlelog.language")+'platoon/landing/">Platoons</a></li>');
+	  	        $(".base-section-menu").append('<li data-page="platoons"><a class="wfont" href="/bf3/'+BBLog.cache("battlelog.language")+'platoon/landing/">Platoons</a></li>');
           }
 	      }
-        instance.AddDropdown(instance);
         },   
 
 domchange : function(instance){
-        if(BBLog.cache("mode") == "bf3"){}
+        if(BBLog.cache("mode") == "bf3"){
+          instance.AddDropdown(instance);
+        }
 	      if(BBLog.cache("mode") == "bf4"){
-          if(!$(".base-section-menu > li[data-page='platoons']").length) {
-	  	      $(".base-section-menu").append('<li data-page="platoons"><a class="wfont" href="/bf3/'+BBLog.cache("battlelog.language")+'platoon/landing/">Platoons</a></li>');
+          if($(".base-section-menu > li[data-page='platoons']").length < 1) {
+	  	        $(".base-section-menu").append('<li data-page="platoons"><a class="wfont" href="/bf3/'+BBLog.cache("battlelog.language")+'platoon/landing/">Platoons</a></li>');
           }
 	      }
-        instance.AddDropdown(instance);
         },     
     
 AddDropdown : function(instance){
