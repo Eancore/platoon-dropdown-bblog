@@ -35,7 +35,10 @@ translations : {
     },
     
 LoadPlatoonList : function(instance) {
-    var platoondropdownmenucode = '<div class="section-title customfont">' + instance.t("plugin.description") + '</div><div class="section-description"><p>' + instance.t("text.description") + '</p></div>';
+  },  
+  
+PlatoonDropdownMenu : function(instance) {
+    var platoondropdownmenucode = '<p>' + instance.t("text.description") + '</p>';
     var platoondropdownstoredplatoonsmenu = instance.storage("platoondropdownstoredplatoons");
     if(platoondropdownstoredplatoonsmenu == null || platoondropdownstoredplatoonsmenu=="")
     {}
@@ -47,12 +50,7 @@ LoadPlatoonList : function(instance) {
       });
     }
     platoondropdownmenucode += '<div class="spacer"></div><input type="text" class="pd-name" placeholder="' + instance.t("hint.name") + '" style="width: 45%; margin-right: 10px"></input><input type="text" class="pd-id" placeholder="' + instance.t("hint.id") + '" style="width: 45%; margin-right: 10px"></input><span class="bblog-button tiny pd-add" style="vertical-align: middle">' + instance.t("button.add") + '</span>';
-    $(".bblog-options > .advanced").html(platoondropdownmenucode);
-  },  
-  
-PlatoonDropdownMenu : function(instance) {
-    instance.LoadPlatoonList(instance);
-    $(".bblog-options > .advanced").fadeIn('slow');
+    BBLog.popup("platoon-dropdown", instance.t("plugin.description"), platoondropdownmenucode)
 },
   
 init : function(instance){
