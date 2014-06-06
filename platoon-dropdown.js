@@ -59,7 +59,8 @@ init : function(instance){
         }
 	if(BBLog.cache("mode") == "bf4"){
           instance.AddDropdown(instance);
-        },   
+	}
+       },   
 
 domchange : function(instance){
         if(BBLog.cache("mode") == "bf3"){
@@ -67,7 +68,8 @@ domchange : function(instance){
         }
 	if(BBLog.cache("mode") == "bf4"){
           instance.AddDropdown(instance);
-        },     
+	}
+       },     
     
 AddDropdown : function(instance){
     var platoondropdownstoredplatoonsdropdown = instance.storage("platoondropdownstoredplatoons");
