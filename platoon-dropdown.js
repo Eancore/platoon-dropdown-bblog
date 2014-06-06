@@ -3,9 +3,9 @@
 *  - adds a platoon dropdown menu
 *
 * @author dapil
-* @version 2.0.0
+* @version 2.1
 * @url http://dapil.github.io/platoon-dropdown-bblog/master/platoon-dropdown.js
-* @last-edit 6. 12. 2013 23:28
+* @last-edit 6. 6. 2014 23:13
 */
 
 BBLog.handle("add.plugin", {
@@ -36,7 +36,7 @@ translations : {
             "plugin.description" : "GESTION DES SECTIONS",
             "text.description" : "Vous pouvez choisir quelle section sera affiché en prenant l'ID SECTION suivant l'exemple ci-dessous: http://battlelog.battlefield.com/bf3/en/platoon/2832655241424190855/ ID SECTION : 2832655241424190855.",
             "button.add" : "AJOUTER SECTION",
-            "hint.name" : "NOM SECTION",
+            "hint.name" : "AFFICHER NOM SECTION",
             "hint.id" : "ID SECTION",
         },
     },
