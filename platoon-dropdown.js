@@ -32,11 +32,15 @@ translations : {
             "hint.name" : "Zobrazované jméno",
             "hint.id" : "ID čety",            
         },
+        "fr" : {
+            "plugin.description" : "GESTION DES SECTIONS",
+            "text.description" : "Vous pouvez choisir quelle section sera affiché en prenant l'ID SECTION suivant l'exemple ci-dessous: http://battlelog.battlefield.com/bf3/en/platoon/2832655241424190855/ ID SECTION : 2832655241424190855.",
+            "button.add" : "AJOUTER SECTION",
+            "hint.name" : "NOM SECTION",
+            "hint.id" : "ID SECTION",
+        },
     },
     
-LoadPlatoonList : function(instance) {
-  },  
-  
 PlatoonDropdownMenu : function(instance) {
     var platoondropdownmenucode = '<p>' + instance.t("text.description") + '</p>';
     var platoondropdownstoredplatoonsmenu = instance.storage("platoondropdownstoredplatoons");
@@ -57,29 +61,23 @@ init : function(instance){
         if(BBLog.cache("mode") == "bf3"){
           instance.AddDropdown(instance);
         }
-	      if(BBLog.cache("mode") == "bf4"){
-          if(!$(".base-section-menu > li[data-page='platoons']").length) {
-	  	        $(".base-section-menu").append('<li data-page="platoons"><a class="wfont" href="/bf3/'+BBLog.cache("battlelog.language")+'platoon/landing/">Platoons</a></li>');
-          }
-	      }
-        },   
+	if(BBLog.cache("mode") == "bf4"){
+          instance.AddDropdown(instance);
+	}
+       },   
 
 domchange : function(instance){
         if(BBLog.cache("mode") == "bf3"){
           instance.AddDropdown(instance);
         }
-	      if(BBLog.cache("mode") == "bf4"){
-          if(!$(".base-section-menu > li[data-page='platoons']").length) {
-	  	        $(".base-section-menu").append('<li data-page="platoons"><a class="wfont" href="/bf3/'+BBLog.cache("battlelog.language")+'platoon/landing/">Platoons</a></li>');
-          }
-	      }
-        },     
+	if(BBLog.cache("mode") == "bf4"){
+          instance.AddDropdown(instance);
+	}
+       },     
     
 AddDropdown : function(instance){
     var platoondropdownstoredplatoonsdropdown = instance.storage("platoondropdownstoredplatoons");
-    if(platoondropdownstoredplatoonsdropdown == null || platoondropdownstoredplatoonsdropdown=="")
-    {}
-    else
+    if(platoondropdownstoredplatoonsdropdown != null || platoondropdownstoredplatoonsdropdown != "")
     {
           if (!$('.dropdown-content[data-for="platoons"]').length) {
             $(".base-section-menu li[data-page='platoons']").addClass("has-dropdown");
@@ -89,7 +87,7 @@ AddDropdown : function(instance){
             $('.dropdown-content[data-for="platoons"] > .row').append('<nav class="span4 dropdown-menu"></nav>');
             $.each(platoondropdownstoredplatoonsdropdown, function(index, value) {
                   var item = value.split("||||");
-  				        $('.dropdown-content[data-for="platoons"] > .row > nav').append('<a href="http://battlelog.battlefield.com/bf3/'+BBLog.cache("battlelog.language")+'platoon/'+item[1]+'/" data-pdindex="'+index+'"><i class="icon-white icon-friends2"></i><span>'+item[0]+'</span></a>');           
+  	          $('.dropdown-content[data-for="platoons"] > .row > nav').append('<a href="http://battlelog.battlefield.com/bf3/'+BBLog.cache("battlelog.language")+'platoon/'+item[1]+'/" data-pdindex="'+index+'"><i class="icon-white icon-friends2"></i><span>'+item[0]+'</span></a>');           
             });
             $(".dropdown-bar").append('</nav></div></div>');
           }
@@ -102,7 +100,6 @@ AddDropdown : function(instance){
          console.log(platoondropdownstoredplatoonsdelete);
 	 instance.storage("platoondropdownstoredplatoons", platoondropdownstoredplatoonsdelete);
          $('.dropdown-content[data-for="platoons"] > .row > nav > a[data-pdindex="' + index + '"]').css("display", "none");
-         instance.LoadPlatoonList(instance);
          if(platoondropdownstoredplatoonsdelete == null || platoondropdownstoredplatoonsdelete=="") 
          {
           $(".base-section-menu li[data-page='platoons']").removeClass("has-dropdown");
@@ -121,7 +118,6 @@ AddDropdown : function(instance){
          }
          else
          {
-         console.log("added");
          platoondropdownstoredplatoonsadd.push(newitem);
          }
          instance.storage("platoondropdownstoredplatoons", platoondropdownstoredplatoonsadd);
