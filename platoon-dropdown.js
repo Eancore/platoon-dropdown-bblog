@@ -3,9 +3,9 @@
 *  - adds a platoon dropdown menu
 *
 * @author dapil
-* @version 2.1
+* @version 2.1.1
 * @url http://dapil.github.io/platoon-dropdown-bblog/master/platoon-dropdown.js
-* @last-edit 6. 6. 2014 23:13
+* @last-edit 7. 6. 2014 9:09
 */
 
 BBLog.handle("add.plugin", {
@@ -39,6 +39,20 @@ translations : {
             "hint.name" : "AFFICHER NOM SECTION",
             "hint.id" : "ID SECTION",
         },
+        "pt" : {
+            "plugin.description" : "Gerenciar Tropas exibidas",
+            "text.description" : "Aqui você pode escolher quais tropas serão exibidas. Você pode obter o ID de uma tropa na URL da seguinte página, por exemplo: http://battlelog.battlefield.com/bf3/en/platoon/2832655241424190855/, o ID é <strong>2832655241424190855</strong>.",
+            "button.add" : "Adicionar",
+            "hint.name" : "Nome Exibido",
+            "hint.id" : "ID da Tropa",
+         },
+         "de" : {
+            "plugin.description" : "Verwalte angezeigte Platoons",
+            "text.description" : "In diesem Dialog kannst du ausw&auml;hlen welche Platoons angezeigt werden sollen. Die ID des gew&uuml;nschten Platoons kannst du der Seiten-URL entnehmen. Beispiel: URL = http://battlelog.battlefield.com/bf4/platoons/view/4726603585846748181/, Platoon-ID = <strong>4726603585846748181</strong>.",
+            "button.add" : "Hinzuf&uuml;gen",
+            "hint.name" : "Anzeigename",
+            "hint.id" : "Platoon-ID",
+         },
     },
     
 PlatoonDropdownMenu : function(instance) {
