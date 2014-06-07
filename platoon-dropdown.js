@@ -72,22 +72,17 @@ PlatoonDropdownMenu : function(instance) {
 },
   
 init : function(instance){
-        if(BBLog.cache("mode") == "bf3"){
+        if(BBLog.cache("mode") == "bf3" || BBLog.cache("mode") == "bf4"){
           instance.AddDropdown(instance);
         }
-	if(BBLog.cache("mode") == "bf4"){
-          instance.AddDropdown(instance);
-	}
        },   
 
 domchange : function(instance){
-        if(BBLog.cache("mode") == "bf3"){
+        if(BBLog.cache("mode") == "bf3" || BBLog.cache("mode") == "bf4"){
           instance.AddDropdown(instance);
         }
-	if(BBLog.cache("mode") == "bf4"){
-          instance.AddDropdown(instance);
-	}
-       },     
+       },   
+    
     
 AddDropdown : function(instance){
     var platoondropdownstoredplatoonsdropdown = instance.storage("platoondropdownstoredplatoons");
@@ -101,7 +96,15 @@ AddDropdown : function(instance){
             $('.dropdown-content[data-for="platoons"] > .row').append('<nav class="span4 dropdown-menu"></nav>');
             $.each(platoondropdownstoredplatoonsdropdown, function(index, value) {
                   var item = value.split("||||");
-  	          $('.dropdown-content[data-for="platoons"] > .row > nav').append('<a href="http://battlelog.battlefield.com/bf3/'+BBLog.cache("battlelog.language")+'platoon/'+item[1]+'/" data-pdindex="'+index+'"><i class="icon-white icon-friends2"></i><span>'+item[0]+'</span></a>');           
+                  if(BBLog.cache("mode") == "bf3")
+                  {
+                  	$('.dropdown-content[data-for="platoons"] > .row > nav').append('<a href="http://battlelog.battlefield.com/bf3/'+BBLog.cache("battlelog.language")+'platoon/'+item[1]+'/" data-pdindex="'+index+'"><i class="icon-white icon-friends2"></i><span>'+item[0]+'</span></a>');           
+		  }
+                  if(BBLog.cache("mode") == "bf4")
+                  {
+                  	$('.dropdown-content[data-for="platoons"] > .row > nav').append('<a href="http://battlelog.battlefield.com/bf4/'+BBLog.cache("battlelog.language")+'platoons/view/'+item[1]+'/" data-pdindex="'+index+'"><i class="icon-white icon-friends2"></i><span>'+item[0]+'</span></a>');           
+		  }
+
             });
             $(".dropdown-bar").append('</nav></div></div>');
           }
