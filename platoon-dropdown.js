@@ -25,6 +25,7 @@ translations : {
             "hint.id" : "Platoon ID",
          },
         "cs" : {
+            "plugin.name" : "Vyjížděcí menu pro čety",
             "plugin.description" : "Spravovat zobrazené čety",
             "text.description" : "Zde můžete určit, které čety se budou zobrazovat. ID čety můžete získat z URL stránky čety, například pro http://battlelog.battlefield.com/bf3/cs/platoon/2832655241424190855/ je ID <strong>2832655241424190855</strong>.",
             "button.add" : "Přidat",
