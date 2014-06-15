@@ -19,13 +19,12 @@ configFlags : [
 translations : {
         "en" : {
             "plugin.description" : "Manage displayed platoons",
-            "text.description" : "Here you can choose which platoons will be displayed. You can get the ID of a platoon from the URL of its page, for example: in http://battlelog.battlefield.com/bf3/en/platoon/2832655241424190855/, the ID is <strong>2832655241424190855</strong>.",
+            "text.description" : "Here you can choose which platoons will be displayed. You can get the Platoon ID from the URL of its page, for example: in http://battlelog.battlefield.com/bf3/en/platoon/2832655241424190855/, the ID is <strong>2832655241424190855</strong>.",
             "button.add" : "Add",
             "hint.name" : "Displayed name",
-            "hint.id" : "ID of platoon",
+            "hint.id" : "Platoon ID",
          },
         "cs" : {
-            "plugin.name" : "Vyjížděcí menu pro čety",
             "plugin.description" : "Spravovat zobrazené čety",
             "text.description" : "Zde můžete určit, které čety se budou zobrazovat. ID čety můžete získat z URL stránky čety, například pro http://battlelog.battlefield.com/bf3/cs/platoon/2832655241424190855/ je ID <strong>2832655241424190855</strong>.",
             "button.add" : "Přidat",
@@ -34,10 +33,10 @@ translations : {
         },
         "fr" : {
             "plugin.description" : "GESTION DES SECTIONS",
-            "text.description" : "Vous pouvez choisir quelle section sera affiché en prenant l'ID SECTION suivant l'exemple ci-dessous: http://battlelog.battlefield.com/bf3/en/platoon/2832655241424190855/ ID SECTION : 2832655241424190855.",
-            "button.add" : "AJOUTER SECTION",
-            "hint.name" : "AFFICHER NOM SECTION",
-            "hint.id" : "ID SECTION",
+            "text.description" : "Vous pouvez choisir quelle section sera affiché en prenant l'ID de la section suivant l'exemple ci-dessous: http://battlelog.battlefield.com/bf3/en/platoon/2832655241424190855/ ID SECTION : 2832655241424190855.",
+            "button.add" : "AJOUTER LA SECTION",
+            "hint.name" : "AFFICHER LE NOM DE LA SECTION",
+            "hint.id" : "ID DE LA SECTION",
         },
         "pt" : {
             "plugin.description" : "Gerenciar Tropas exibidas",
